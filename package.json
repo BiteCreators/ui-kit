@@ -1,6 +1,6 @@
 {
   "name": "@byte-creators/ui-kit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -8,6 +8,10 @@
     "build": "tsc",
     "test": "jest",
     "lint": "eslint --fix src/**/*.{tsx,ts,jsx,js} --config ./.eslintrc.cjs --no-error-on-unmatched-pattern"
+  },
+  "exports": {
+    "./icons": "./dist/assets/icons/components",
+    "./": "./dist/index.js"
   },
   "keywords": [],
   "author": "",
