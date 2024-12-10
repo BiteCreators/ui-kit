@@ -1,1 +1,0 @@
-{"version":3,"file":"SelectSideTop.d.ts","sourceRoot":"","sources":["SelectSideTop.tsx"],"names":[],"mappings":"AAAA,OAAO,KAAsC,MAAM,OAAO,CAAC;AAG3D,OAAO,KAAK,eAAe,MAAM,wBAAwB,CAAC;AAU1D,eAAO,MAAM,aAAa;kBALV,MAAM;SACf,MAAM;mBACI,CAAC,KAAK,EAAE,MAAM,KAAK,IAAI;yEA0CvC,CAAC;AAIF,eAAO,MAAM,UAAU,wGAgBtB,CAAC"}

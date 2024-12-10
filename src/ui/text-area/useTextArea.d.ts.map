@@ -1,1 +1,0 @@
-{"version":3,"file":"useTextArea.d.ts","sourceRoot":"","sources":["useTextArea.ts"],"names":[],"mappings":"AAAA,OAAO,KAAgD,MAAM,OAAO,CAAC;AAErE,eAAO,MAAM,WAAW,8BAGrB;IACD,UAAU,CAAC,EAAE,OAAO,CAAC;IACrB,QAAQ,EAAE,KAAK,CAAC,kBAAkB,CAAC,mBAAmB,CAAC,GAAG,SAAS,CAAC;CACrE;sBAgB0B,KAAK,CAAC,WAAW,CAAC,mBAAmB,CAAC;;;CAUhE,CAAC"}
