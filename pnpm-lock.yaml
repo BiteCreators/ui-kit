@@ -12,8 +12,8 @@ importers:
         specifier: ^1.0.5
         version: 1.0.5(atbljvzfxbdqq4c7z2hbvyd6zy)
       '@byte-creators/utils':
-        specifier: ^1.0.3
-        version: 1.0.3(f4akaxuhvtfz7gicc6csjflih4)
+        specifier: ^1.0.4
+        version: 1.0.4(f4akaxuhvtfz7gicc6csjflih4)
       '@hookform/resolvers':
         specifier: ^3.9.0
         version: 3.9.1(react-hook-form@7.54.0(react@18.3.1))
@@ -887,8 +887,8 @@ packages:
       tailwindcss: ^3.4.1
       typescript: ^5
 
-  '@byte-creators/utils@1.0.3':
-    resolution: {integrity: sha512-qYenGdL3lQObETC4UoZFUQ6luyShc0IibBqbLGcu8MdAd4FSRIUok/kG/rak8aGNnGQd6uMowmIK+UHl+3sD3Q==}
+  '@byte-creators/utils@1.0.4':
+    resolution: {integrity: sha512-5/m3Z5Sx9RPluAf1ApnwmAnTlR1Erp22bO4h2k+FJKkWwwvNhjVennTkXboeLKopQXtITOpH7qGhmPYRjZKw9Q==}
 
   '@cspotcode/source-map-support@0.8.1':
     resolution: {integrity: sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw==}
@@ -6905,7 +6905,7 @@ snapshots:
       tailwindcss: 3.4.16(ts-node@10.9.2(@types/node@20.17.9)(typescript@5.7.2))
       typescript: 5.7.2
 
-  '@byte-creators/utils@1.0.3(f4akaxuhvtfz7gicc6csjflih4)':
+  '@byte-creators/utils@1.0.4(f4akaxuhvtfz7gicc6csjflih4)':
     dependencies:
       '@byte-creators/config': 1.0.5(atbljvzfxbdqq4c7z2hbvyd6zy)
       clsx: 2.1.1
