@@ -3,7 +3,8 @@
     [
       "@babel/preset-env",
       {
-        "modules": false
+        "modules": false,
+        "targets": "defaults"
       }
     ],
     [
@@ -29,5 +30,12 @@
         "keepImport": true
       }
     ]
-  ]
+  ],
+  "overrides": [
+    {
+      "test": "\\.tsx?$",
+      "plugins": ["@babel/plugin-transform-modules-commonjs"]
+    }
+  ],
+  "sourceType": "module"
 }
