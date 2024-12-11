@@ -46,9 +46,7 @@
     "javascript-time-ago": "^2.5.11",
     "next": "14.2.7",
     "nprogress": "^0.2.0",
-    "react": "^18",
     "react-day-picker": "^9.1.2",
-    "react-dom": "^18",
     "react-google-recaptcha": "^3.1.0",
     "react-google-recaptcha-v3": "^1.10.1",
     "react-hook-form": "^7.53.0",
@@ -57,7 +55,13 @@
     "tailwind-merge": "^2.5.2",
     "zod": "^3.23.8"
   },
+  "peerDependencies": {
+    "react": "^18",
+    "react-dom": "^18"
+  },
   "devDependencies": {
+    "react": "^18",
+    "react-dom": "^18",
     "@babel/cli": "^7.26.4",
     "@babel/core": "^7.26.0",
     "@babel/preset-env": "^7.26.0",
