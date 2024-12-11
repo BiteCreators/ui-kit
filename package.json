@@ -1,9 +1,10 @@
 {
   "name": "@byte-creators/ui-kit",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "type": "module",
   "scripts": {
     "build": "tsc && babel src --out-dir dist --extensions \".ts,.tsx\" --copy-files",
     "test": "jest",
