@@ -1,6 +1,6 @@
 {
   "name": "@byte-creators/ui-kit",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -15,6 +15,10 @@
       "import": "./dist/index.mjs",
       "types": "./dist/index.d.ts"
     },
+    "./ui": {
+      "import": "./dist/ui/index.mjs",
+      "types": "./dist/ui/index.d.ts"
+    }
     "./icons": {
       "import": "./dist/assets/icons/components/index.mjs",
       "types": "./dist/assets/icons/components/index.d.ts"
