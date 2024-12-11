@@ -13,7 +13,17 @@ require("esbuild")
     outdir: "dist",
     minify: true, // optional, you can set this to false if you don’t want minification
     sourcemap: false, // optional, to generate sourcemaps
-    external: ["fs", "path"], // specify external dependencies if needed
+    external: [
+      "fs",
+      "path",
+      "react-swipeable",
+      "@byte-creators/utils",
+      "aria-hidden",
+      "react-remove-scroll",
+      "zlib",
+      "stream",
+      "react-google-recaptcha",
+    ], // specify external dependencies if needed
     loader: {
       ".ts": "ts", // Load TypeScript files
       ".tsx": "tsx", // Load TSX files
