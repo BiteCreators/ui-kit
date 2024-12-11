@@ -11,6 +11,7 @@ require("esbuild")
     platform: "neutral", // specify platform (node for backend, browser for frontend)
     target: "esnext", // for modern JavaScript (can be adjusted if needed)
     outdir: "dist",
+    format: "esm",
     minify: true, // optional, you can set this to false if you don’t want minification
     sourcemap: false, // optional, to generate sourcemaps
     external: [
