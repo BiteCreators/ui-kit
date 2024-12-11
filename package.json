@@ -1,22 +1,22 @@
 {
   "name": "@byte-creators/ui-kit",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
   "scripts": {
-    "build": "tsc && babel src --out-dir dist --extensions \".ts,.tsx\" --copy-files && node rename-to-mjs.js",
+    "build": "tsc && babel src --out-dir dist --extensions \".ts,.tsx\" --copy-files",
     "test": "jest",
     "lint": "eslint --fix src/**/*.{tsx,ts,jsx,js} --config ./.eslintrc.cjs --no-error-on-unmatched-pattern"
   },
   "exports": {
     ".": {
-      "import": "./dist/index.mjs",
+      "import": "./dist/index.js",
       "types": "./dist/index.d.ts"
     },
     "./icons": {
-      "import": "./dist/assets/icons/components/index.mjs",
+      "import": "./dist/assets/icons/components/index.js",
       "types": "./dist/assets/icons/components/index.d.ts"
     }
   },
