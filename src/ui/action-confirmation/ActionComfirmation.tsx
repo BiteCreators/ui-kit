@@ -1,8 +1,8 @@
 import React, { ReactNode } from "react";
 
 import { cn, useScopedTranslation } from "@byte-creators/utils";
-
-import { Button, Modal } from "..";
+import { Modal } from "../modal/Modal";
+import { Button } from "../button/Button";
 
 type Props = {
   children?: ReactNode;
