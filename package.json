@@ -6,7 +6,7 @@
   "types": "dist/index.d.ts",
   "type": "module",
   "scripts": {
-    "build": "node ./esbuild.config.cjs",
+    "build": "tsc && cp ./src/ui/styles.css ./dist/ui/styles.css",
     "test": "jest",
     "lint": "eslint --fix src/**/*.{tsx,ts,jsx,js} --config ./.eslintrc.cjs --no-error-on-unmatched-pattern"
   },
@@ -18,7 +18,8 @@
     "./icons": {
       "import": "./dist/assets/icons/components/index.js",
       "types": "./dist/assets/icons/components/index.d.ts"
-    }
+    },
+    "./styles": "./dist/ui/styles.css"
   },
   "keywords": [],
   "author": "",
