@@ -15,8 +15,8 @@ importers:
         specifier: ^1.0.5
         version: 1.0.5(n44c77yci3dyuugzxp4bp5a7au)
       '@byte-creators/utils':
-        specifier: file:../inct-utils/byte-creators-utils-1.1.1.tgz
-        version: file:../inct-utils/byte-creators-utils-1.1.1.tgz(6lt3g3gerjrswk4ezvcdmofpam)
+        specifier: ^1.1.1
+        version: 1.1.1(6lt3g3gerjrswk4ezvcdmofpam)
       '@hookform/resolvers':
         specifier: ^3.9.0
         version: 3.9.1(react-hook-form@7.54.0(react@18.3.1))
@@ -896,9 +896,8 @@ packages:
       tailwindcss: ^3.4.1
       typescript: ^5
 
-  '@byte-creators/utils@file:../inct-utils/byte-creators-utils-1.1.1.tgz':
-    resolution: {integrity: sha512-IjToREd3LdvJogcBevwrt64QxB5chRouF3m0hQI4BV9cip7xW2zK+gO4PuQslQVnzMCK/ursmTAH9spZnQlBzw==, tarball: file:../inct-utils/byte-creators-utils-1.1.1.tgz}
-    version: 1.1.1
+  '@byte-creators/utils@1.1.1':
+    resolution: {integrity: sha512-uIS3KIdATjO0gbSzGzViMqLegQHcWqIlV1gw8twpx7qlUl1mnwNzmhB1EJIP7x4PYU5rj7/Uon0sQMWDt8Xc8A==}
     peerDependencies:
       next: 14.2.7
       react: ^18
@@ -6956,7 +6955,7 @@ snapshots:
       tailwindcss: 3.4.16(ts-node@10.9.2(@types/node@20.17.10)(typescript@5.7.2))
       typescript: 5.7.2
 
-  '@byte-creators/utils@file:../inct-utils/byte-creators-utils-1.1.1.tgz(6lt3g3gerjrswk4ezvcdmofpam)':
+  '@byte-creators/utils@1.1.1(6lt3g3gerjrswk4ezvcdmofpam)':
     dependencies:
       '@byte-creators/config': 1.0.5(n44c77yci3dyuugzxp4bp5a7au)
       clsx: 2.1.1
