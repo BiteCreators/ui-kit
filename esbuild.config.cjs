@@ -25,8 +25,6 @@ const sharedConfig = {
         "react-google-recaptcha",
         "react",
         "react-dom",
-        "next",
-        "next/link",
         "react/jsx-runtime",
     ],
     loader: {
