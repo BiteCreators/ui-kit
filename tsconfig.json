@@ -1,9 +1,11 @@
 {
   "extends": "@byte-creators/config/tsconfig.npm.json",
   "compilerOptions": {
-    "rootDir": "src",
-    "outDir": "dist",
+    "declaration": true,
+    "declarationDir": "dist",
     "emitDeclarationOnly": true,
+    "outDir": "dist",
+    "rootDir": "src",
     "declarationMap": false
   },
   "include": ["src"],

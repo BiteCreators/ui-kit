@@ -1,8 +1,9 @@
 {
   "name": "@byte-creators/ui-kit",
-  "version": "1.1.6",
+  "version": "1.1.7",
   "description": "",
-  "main": "dist/index.js",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
   "scripts": {
@@ -12,11 +13,13 @@
   },
   "exports": {
     ".": {
-      "import": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "types": "./dist/index.d.ts",
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/esm/index.js"
     },
     "./icons": {
-      "import": "./dist/assets/icons/components/index.js",
+      "require": "./dist/cjs/assets/icons/components/index.js",
+      "import": "./dist/esm/assets/icons/components/index.js",
       "types": "./dist/assets/icons/components/index.d.ts"
     }
   },
