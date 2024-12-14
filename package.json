@@ -1,27 +1,26 @@
 {
   "name": "@byte-creators/ui-kit",
-  "version": "1.1.8",
+  "version": "1.1.9",
   "description": "",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
   "scripts": {
-    "build": "node ./esbuild.config.cjs",
+    "build": "tsc && cp ./src/ui/styles.css ./dist/ui/styles.css",
     "test": "jest",
     "lint": "eslint --fix src/**/*.{tsx,ts,jsx,js} --config ./.eslintrc.cjs --no-error-on-unmatched-pattern"
   },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "require": "./dist/cjs/index.js",
-      "import": "./dist/esm/index.js"
+      "import": "./dist/index.js"
     },
     "./icons": {
-      "require": "./dist/cjs/assets/icons/components/index.js",
-      "import": "./dist/esm/assets/icons/components/index.js",
+      "import": "./dist/assets/icons/components/index.js",
       "types": "./dist/assets/icons/components/index.d.ts"
-    }
+    },
+    "./styles": "./dist/ui/styles.css"
   },
   "keywords": [],
   "author": "",
