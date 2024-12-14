@@ -1,11 +1,9 @@
 {
   "name": "@byte-creators/ui-kit",
-  "version": "1.1.9",
+  "version": "1.1.10",
   "description": "",
-  "main": "dist/cjs/index.js",
-  "module": "dist/esm/index.js",
+  "main": "dist/index.js",
   "types": "dist/index.d.ts",
-  "type": "module",
   "scripts": {
     "build": "tsc && cp ./src/ui/styles.css ./dist/ui/styles.css",
     "test": "jest",
