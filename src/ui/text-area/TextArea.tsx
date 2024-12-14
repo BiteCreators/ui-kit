@@ -2,8 +2,6 @@ import React, { ComponentProps, forwardRef } from "react";
 
 import { cn, mergeRefs } from "@byte-creators/utils";
 
-import s from "./textAreaScroll.module.css";
-
 import { useTextArea } from "./useTextArea";
 
 export type TextAreaProps = {
@@ -72,7 +70,7 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
             "overflow-y-hidden resize-none",
             "transition-[outline-color] duration-100",
             "overflow-y-auto",
-            s["custom-textarea"],
+            ["custom-textarea"],
             isError && "border-danger-500",
             resize === "manual-y" && "overflow-y-auto resize-y",
             resize === "manual-x" && "overflow-x-auto resize-x",

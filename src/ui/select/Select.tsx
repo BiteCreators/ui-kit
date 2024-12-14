@@ -5,8 +5,6 @@ import { cn } from "@byte-creators/utils";
 import * as SelectPrimitive from "@radix-ui/react-select";
 import { motion } from "framer-motion";
 
-import s from "./select.module.css";
-
 import { ArrowIosDownOutline } from "../../assets/icons/components";
 
 export type SelectProps = {
@@ -88,7 +86,7 @@ export const Select = forwardRef<HTMLButtonElement, SelectProps>(
           >
             <div
               className={`flex gap-3 align-center ${
-                responsive && s.selectValue
+                responsive && "selectValue"
               }`}
             >
               {icon}
