@@ -1,11 +1,11 @@
 {
   "name": "@byte-creators/ui-kit",
-  "version": "1.1.10",
+  "version": "1.2.0",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc && cp ./src/ui/styles.css ./dist/ui/styles.css",
+    "build": "tsc && rollup -c --bundleConfigAsCjs",
     "test": "jest",
     "lint": "eslint --fix src/**/*.{tsx,ts,jsx,js} --config ./.eslintrc.cjs --no-error-on-unmatched-pattern"
   },
@@ -33,7 +33,7 @@
   "dependencies": {
     "@babel/runtime": "^7.26.0",
     "@byte-creators/config": "^1.0.5",
-    "@byte-creators/utils": "^1.1.1",
+    "@byte-creators/utils": "^1.2.0",
     "@hookform/resolvers": "^3.9.0",
     "@radix-ui/react-dialog": "^1.1.1",
     "@radix-ui/react-dropdown-menu": "^2.1.1",
@@ -48,6 +48,10 @@
     "zod": "^3.23.8"
   },
   "peerDependencies": {
+    "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-terser": "^0.4.4",
+    "@rollup/plugin-typescript": "^11.1.6",
     "clsx": "^2.1.1",
     "framer-motion": "^11.5.4",
     "next": "14.2.20",
@@ -59,6 +63,10 @@
     "react-hook-form": "^7.53.0",
     "react-image-crop": "^11.0.7",
     "react-swipeable": "^7.0.1",
+    "rollup": "^4.18.1",
+    "rollup-plugin-dts": "^6.1.1",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-postcss": "^4.0.2",
     "tailwind-merge": "^2.5.2"
   },
   "devDependencies": {
@@ -71,6 +79,7 @@
     "@it-incubator/eslint-config": "^1.0.3",
     "@it-incubator/prettier-config": "^0.1.2",
     "@it-incubator/stylelint-config": "^2.0.0",
+    "@rollup/plugin-node-resolve": "^15.3.1",
     "@storybook/addon-actions": "^8.3.2",
     "@storybook/addon-essentials": "^8.2.9",
     "@storybook/addon-interactions": "^8.2.9",
@@ -121,6 +130,7 @@
     "tailwindcss": "^3.4.1",
     "ts-jest": "^29.2.5",
     "ts-node": "^10.9.2",
+    "tslib": "^2.8.1",
     "typescript": "^5"
   }
 }
