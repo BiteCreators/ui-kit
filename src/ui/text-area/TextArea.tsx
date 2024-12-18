@@ -1,8 +1,6 @@
 import React, { ComponentProps, forwardRef } from "react";
 
-import { cn, mergeRefs } from "@byte-creators/utils";
-
-import { useTextArea } from "./useTextArea";
+import { cn, mergeRefs, useTextArea} from "@byte-creators/utils";
 
 export type TextAreaProps = {
   className?: string;
