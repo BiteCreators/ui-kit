@@ -1,11 +1,11 @@
 {
   "name": "@byte-creators/ui-kit",
-  "version": "1.3.2",
+  "version": "1.3.3",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "build": "tsc && rollup -c --bundleConfigAsCjs",
+    "build": "tsc && rollup -c --bundleConfigAsCjs && cp ./src/ui/styles.css ./dist/ui",
     "test": "jest",
     "lint": "eslint --fix src/**/*.{tsx,ts,jsx,js} --config ./.eslintrc.cjs --no-error-on-unmatched-pattern"
   },
