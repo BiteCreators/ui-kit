@@ -66,6 +66,7 @@ export { default as MoreHorizontal } from "./MoreHorizontal";
 export { default as MoreHorizontalOutline } from "./MoreHorizontalOutline";
 export { default as Opera } from "./Opera";
 export { default as OutlineBell } from "./OutlineBell";
+export { default as OutlineBellNoNumber } from "./OutlineBellNoNumber";
 export { default as Paid } from "./Paid";
 export { default as PaperPlane } from "./PaperPlane";
 export { default as PaperPlaneOutline } from "./PaperPlaneOutline";
