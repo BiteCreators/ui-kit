@@ -92,7 +92,6 @@ export const Pagination = ({
           defaultValue={pagesPortion}
           onValueChange={onChangePagesPortion}
         >
-          {/*@ts-ignore*/}
           <SelectPortion value={"10"}>10</SelectPortion>
           <SelectPortion value={"20"}>20</SelectPortion>
           <SelectPortion value={"30"}>30</SelectPortion>
