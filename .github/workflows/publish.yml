@@ -58,5 +58,9 @@ jobs:
 
       - name: Publish to GitHub Packages
         run: pnpm publish --access public
+
+      - name: Run semantic-release
+
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
