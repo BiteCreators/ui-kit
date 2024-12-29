@@ -28,6 +28,9 @@ jobs:
       - name: Install Dependencies
         run: pnpm install
 
+      - name: Run semantic-release
+        run: npx semantic-release
+
       - name: Run Lint
         run: pnpm lint
 
@@ -59,9 +62,5 @@ jobs:
       - name: Publish to GitHub Packages
         run: pnpm publish --access public
 
-      - name: Run semantic-release
-        run: npx semantic-release
-
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
