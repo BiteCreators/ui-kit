@@ -1,4 +1,5 @@
 module.exports = {
+  repositoryUrl: 'https://github.com/BiteCreators/ui-kit.git',
   branches: ['main'],
   plugins: [
     '@semantic-release/commit-analyzer',

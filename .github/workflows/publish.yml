@@ -28,9 +28,6 @@ jobs:
       - name: Install Dependencies
         run: pnpm install
 
-      - name: Run semantic-release
-        run: npx semantic-release
-
       - name: Run Lint
         run: pnpm lint
 
@@ -58,6 +55,9 @@ jobs:
 
       - name: Build Package
         run: pnpm build
+
+      - name: Run semantic-release
+        run: npx semantic-release
 
       - name: Publish to GitHub Packages
         run: pnpm publish --access public
