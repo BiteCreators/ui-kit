@@ -1,13 +1,14 @@
 {
   "name": "@byte-creators/ui-kit",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc && rollup -c --bundleConfigAsCjs && cpx ./src/ui/styles.css ./dist/ui",
     "test": "jest",
-    "lint": "eslint --fix src/**/*.{tsx,ts,jsx,js} --config ./.eslintrc.cjs --no-error-on-unmatched-pattern"
+    "lint": "eslint --fix src/**/*.{tsx,ts,jsx,js} --config ./.eslintrc.cjs --no-error-on-unmatched-pattern",
+    "sb": "storybook dev -p 6006"
   },
   "exports": {
     ".": {
@@ -118,6 +119,7 @@
     "jest-environment-jsdom": "^29.7.0",
     "jest-fixed-jsdom": "^0.0.9",
     "next": "14.2.20",
+    "postcss": "^8.4.49",
     "react": "^18",
     "react-day-picker": "^9.1.2",
     "react-dom": "^18",
