@@ -17,8 +17,11 @@ type Props = {
   onClickPaginationButton: (page: number) => void;
   pagesCount: number;
   pagesPortion?: string;
+  pagesPortionOptions?: string[];
   siblings?: number;
 };
+
+const defaultPagesPortionOptions = ["10", "20", "30", "50", "100"];
 
 export const Pagination = ({
   className,
@@ -26,7 +29,8 @@ export const Pagination = ({
   onChangePagesPortion,
   onClickPaginationButton,
   pagesCount,
-  pagesPortion = "10",
+  pagesPortion,
+  pagesPortionOptions = defaultPagesPortionOptions,
   siblings = 1,
 }: Props) => {
   const t = useScopedTranslation("Navigation");
@@ -43,6 +47,8 @@ export const Pagination = ({
     pagesCount,
     siblings,
   });
+
+  pagesPortion = pagesPortion || pagesPortionOptions[0] || "10";
 
   return (
     <div
@@ -92,11 +98,11 @@ export const Pagination = ({
           defaultValue={pagesPortion}
           onValueChange={onChangePagesPortion}
         >
-          <SelectPortion value={"10"}>10</SelectPortion>
-          <SelectPortion value={"20"}>20</SelectPortion>
-          <SelectPortion value={"30"}>30</SelectPortion>
-          <SelectPortion value={"50"}>50</SelectPortion>
-          <SelectPortion value={"100"}>100</SelectPortion>
+          {pagesPortionOptions.map((option) => (
+            <SelectPortion key={option} value={option}>
+              {option}
+            </SelectPortion>
+          ))}
         </SelectPagesPortion>
         <span className={"ml-1"}>{t.paginationOnPage}</span>
       </div>
