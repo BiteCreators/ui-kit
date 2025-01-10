@@ -2,6 +2,7 @@ import { cn } from "@byte-creators/utils";
 import Link from "next/link";
 
 import { Close } from "../../assets/icons/components";
+import example from "./examples/exampleAvatar.png";
 
 type Props = {
   alt?: string;
@@ -38,7 +39,7 @@ export const Avatar = ({
       <img
         alt={alt}
         className={cn(imgStyles, [rounded && "rounded-full"])}
-        src={avatarURL ? avatarURL : "./examples/exampleAvatar.png"}
+        src={avatarURL || example}
       />
       {showClose && (
         <span
