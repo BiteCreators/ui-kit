@@ -1,6 +1,7 @@
 import resolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
 import typescript from "@rollup/plugin-typescript";
+import replace from '@rollup/plugin-replace';
 import image from "@rollup/plugin-image";
 // import dts from "rollup-plugin-dts";
 import terser from "@rollup/plugin-terser";
@@ -29,6 +30,10 @@ export default [
       commonjs(),
       image(),
       typescript({ tsconfig: "./tsconfig.json" }),
+      replace({
+        preventAssignment: true,
+        "use client": "",
+      }),
       terser(),
       postcss(),
     ],
