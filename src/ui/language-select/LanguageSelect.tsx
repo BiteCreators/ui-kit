@@ -1,7 +1,9 @@
+"use client";
 import { useScopedTranslation } from "@byte-creators/utils";
+import { useRouter } from "next/router";
+
 import { FlagRussia, FlagUnitedKingdom } from "../../assets/icons/components";
 import { Select, SelectItem } from "../select/Select";
-import { useRouter } from "next/router";
 
 export const LanguageSelect = () => {
   const { asPath, defaultLocale, locale, pathname, push, query } = useRouter();

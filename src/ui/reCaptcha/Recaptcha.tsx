@@ -1,3 +1,4 @@
+"use client";
 import React, { ComponentProps } from "react";
 import ReCAPTCHA from "react-google-recaptcha";
 

@@ -1,3 +1,4 @@
+"use client";
 import React, { InputHTMLAttributes, forwardRef, useId } from "react";
 
 import { cn } from "@byte-creators/utils";

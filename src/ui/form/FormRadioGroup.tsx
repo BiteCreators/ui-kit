@@ -1,3 +1,4 @@
+"use client";
 import { FieldValues, useController } from "react-hook-form";
 
 import { RadioGroup, RadioGroupProps } from "../radio-group/RadioGroup";

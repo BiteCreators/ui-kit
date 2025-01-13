@@ -1,4 +1,4 @@
-import React from "react";
+"use client";
 
 import { cn, useScopedTranslation } from "@byte-creators/utils";
 

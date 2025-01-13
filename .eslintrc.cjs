@@ -1,14 +1,14 @@
 module.exports = {
-    extends: [require("@byte-creators/config").eslint],
-    settings: {
-        "import/resolver": {
-            typescript: {
-                project: "./tsconfig.json"
-            },
-            node: {
-                paths: ["../ui-kit/dist"],
-                extensions: [".js", ".jsx", ".ts", ".tsx"]
-            }
-        }
-    }
+  extends: [require("@byte-creators/config").eslint],
+  settings: {
+    "import/resolver": {
+      node: {
+        extensions: [".js", ".jsx", ".ts", ".tsx"],
+        paths: ["../ui-kit/dist"],
+      },
+      typescript: {
+        project: "./tsconfig.json",
+      },
+    },
+  },
 };

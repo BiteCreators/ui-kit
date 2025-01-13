@@ -1,3 +1,5 @@
+"use client";
+
 import React, { ComponentProps } from "react";
 import { FieldValues, useController } from "react-hook-form";
 
