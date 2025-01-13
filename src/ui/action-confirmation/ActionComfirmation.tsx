@@ -1,8 +1,11 @@
+"use client";
+
 import React, { ReactNode } from "react";
 
 import { cn, useScopedTranslation } from "@byte-creators/utils";
-import { Modal } from "../modal/Modal";
+
 import { Button } from "../button/Button";
+import { Modal } from "../modal/Modal";
 
 type Props = {
   children?: ReactNode;

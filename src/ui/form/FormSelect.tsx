@@ -1,3 +1,4 @@
+"use client";
 import { FieldValues, useController } from "react-hook-form";
 
 import { Select, SelectProps } from "../select/Select";
