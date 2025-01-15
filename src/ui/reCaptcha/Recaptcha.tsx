@@ -1,6 +1,6 @@
 "use client";
-import React, { ComponentProps } from "react";
-import ReCAPTCHA from "react-google-recaptcha";
+import { ComponentProps } from "react";
+import { ReCAPTCHA } from "react-google-recaptcha";
 
 import { cn } from "@byte-creators/utils";
 import { useRouter } from "next/router";
