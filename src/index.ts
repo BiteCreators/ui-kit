@@ -38,3 +38,4 @@ export { TextArea } from "./ui/text-area/TextArea";
 export { Trans } from "./ui/trans/Trans";
 export { Typography } from "./ui/typography/Typography";
 export { LanguageSelect } from "./ui/language-select/LanguageSelect";
+export {LinearLoader} from "./ui/loader/LinearLoader"
