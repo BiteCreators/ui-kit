@@ -1,17 +1,17 @@
-"use client";
-import React, { ComponentProps, forwardRef } from "react";
+'use client'
+import React, { ComponentProps, forwardRef } from 'react'
 
-import { cn, mergeRefs, useTextArea } from "@byte-creators/utils";
+import { cn, mergeRefs, useTextArea } from '@byte-creators/utils'
 
 export type TextAreaProps = {
-  className?: string;
-  error?: string;
-  isCorrect?: boolean;
-  isError?: boolean;
-  label?: string;
-  limitCount?: number;
-  resize?: "auto" | "manual-x" | "manual-y";
-} & ComponentProps<"textarea">;
+  className?: string
+  error?: string
+  isCorrect?: boolean
+  isError?: boolean
+  label?: string
+  limitCount?: number
+  resize?: 'auto' | 'manual-x' | 'manual-y'
+} & ComponentProps<'textarea'>
 
 export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
   (
@@ -26,29 +26,28 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
       limitCount,
       onChange,
       required,
-      resize = "auto",
+      resize = 'auto',
       ...props
     }: TextAreaProps,
-    ref,
+    ref
   ) => {
     if (limitCount) {
-      limitCount = limitCount < 0 ? undefined : limitCount;
+      limitCount = limitCount < 0 ? undefined : limitCount
     }
     const { handleChange, textAreaId, textAreaRef } = useTextArea({
-      autoResize: resize === "auto",
+      autoResize: resize === 'auto',
       onChange,
-    });
-    const currentCount = props.value?.toString().length ?? 0;
+    })
+    const currentCount = props.value?.toString().length ?? 0
 
     return (
-      <div className={"flex flex-col"}>
+      <div className={'flex flex-col'}>
         {!!label && (
           <label
             className={cn(
-              "text-light-900  text-sm",
-              disabled && "text-dark-100",
-              required &&
-                'after:content-["*"] after:ml-0.5 after: text-light-900',
+              'text-light-900  text-sm',
+              disabled && 'text-dark-100',
+              required && 'after:content-["*"] after:ml-0.5 after: text-light-900'
             )}
             htmlFor={id ?? textAreaId}
           >
@@ -57,22 +56,22 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         )}
         <textarea
           className={cn([
-            "px-3 py-1.5 min-h-9",
-            "outline-none outline-offset-0",
-            "text-light-100 text-md",
-            "border border-dark-100 rounded-sm",
-            "bg-dark-500",
-            "focus:outline-primary-500 focus:border-dark-500",
-            "active:focus:border-dark-500 active:border-light-100 active:border",
-            "disabled:text-dark-100 disabled:active:border-dark-100",
-            "placeholder:text-light-900 placeholder:text-md",
-            "overflow-y-hidden resize-none",
-            "transition-[outline-color] duration-100",
-            "overflow-y-auto",
-            ["custom-textarea"],
-            isError && "border-danger-500",
-            resize === "manual-y" && "overflow-y-auto resize-y",
-            resize === "manual-x" && "overflow-x-auto resize-x",
+            'px-3 py-1.5 min-h-9',
+            'outline-none outline-offset-0',
+            'text-light-100 text-md',
+            'border border-dark-100 rounded-sm',
+            'bg-dark-500',
+            'focus:outline-primary-500 focus:border-dark-500',
+            'active:focus:border-dark-500 active:border-light-100 active:border',
+            'disabled:text-dark-100 disabled:active:border-dark-100',
+            'placeholder:text-light-900 placeholder:text-md',
+            'overflow-y-hidden resize-none',
+            'transition-[outline-color] duration-100',
+            'overflow-y-auto',
+            ['custom-textarea'],
+            isError && 'border-danger-500',
+            resize === 'manual-y' && 'overflow-y-auto resize-y',
+            resize === 'manual-x' && 'overflow-x-auto resize-x',
             className,
           ])}
           disabled={disabled}
@@ -84,15 +83,11 @@ export const TextArea = forwardRef<HTMLTextAreaElement, TextAreaProps>(
         />
         {!!limitCount && (
           <div
-            className={`flex justify-end text-light-900 text-xs ${
-              !isCorrect && "text-red-700"
-            }`}
+            className={`flex justify-end text-light-900 text-xs ${!isCorrect && 'text-red-700'}`}
           >{`${currentCount}/${limitCount}`}</div>
         )}
-        {isError && (
-          <p className={"text-danger-500 text-sm"}>{error ?? "invalid data"}</p>
-        )}
+        {isError && <p className={'text-danger-500 text-sm'}>{error ?? 'invalid data'}</p>}
       </div>
-    );
-  },
-);
+    )
+  }
+)

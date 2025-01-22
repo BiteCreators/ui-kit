@@ -1,36 +1,30 @@
-"use client";
+'use client'
 
-import { ReactNode, useState } from "react";
+import { ReactNode, useState } from 'react'
 
-import { cn } from "@byte-creators/utils";
-import * as DropdownMenu from "@radix-ui/react-dropdown-menu";
-import { motion } from "framer-motion";
+import { cn } from '@byte-creators/utils'
+import * as DropdownMenu from '@radix-ui/react-dropdown-menu'
+import { motion } from 'framer-motion'
 
-import { MoreHorizontal } from "../../assets/icons/components";
-import { DropdownContent } from "./DropdownContent";
+import { MoreHorizontal } from '../../assets/icons/components'
+import { DropdownContent } from './DropdownContent'
 
 export type DropdownItem = {
-  icon?: ReactNode;
-  label: string;
-  onClick?: () => void;
-};
+  icon?: ReactNode
+  label: string
+  onClick?: () => void
+}
 
 type Props = {
-  children?: ReactNode;
-  className?: string;
-  iconButton?: ReactNode;
-  iconButtonOpen?: ReactNode;
-  items?: DropdownItem[];
-};
+  children?: ReactNode
+  className?: string
+  iconButton?: ReactNode
+  iconButtonOpen?: ReactNode
+  items?: DropdownItem[]
+}
 
-export const Dropdown = ({
-  children,
-  className,
-  iconButton,
-  iconButtonOpen,
-  items,
-}: Props) => {
-  const [open, setOpen] = useState(false);
+export const Dropdown = ({ children, className, iconButton, iconButtonOpen, items }: Props) => {
+  const [open, setOpen] = useState(false)
 
   const variants = {
     closed: {
@@ -51,21 +45,21 @@ export const Dropdown = ({
       },
       translateY: 0,
     },
-  };
+  }
 
   const icon = open
     ? iconButtonOpen || iconButton || <MoreHorizontal />
-    : iconButton || <MoreHorizontal />;
+    : iconButton || <MoreHorizontal />
 
   return (
-    <div className={cn("relative", className)}>
+    <div className={cn('relative', className)}>
       <DropdownMenu.Root onOpenChange={setOpen} open={open}>
         <DropdownMenu.Trigger asChild>
           <button
             className={cn(
-              "absolute top-0 right-0 p-2 rounded-full focus:outline-none",
-              open ? "text-primary-700" : "text-light-100",
-              "global-hover:hover:text-primary-700",
+              'absolute top-0 right-0 p-2 rounded-full focus:outline-none',
+              open ? 'text-primary-700' : 'text-light-100',
+              'global-hover:hover:text-primary-700'
             )}
           >
             {icon}
@@ -74,20 +68,15 @@ export const Dropdown = ({
 
         <DropdownMenu.Portal>
           {open && (
-            <DropdownMenu.Content
-              align={"end"}
-              asChild
-              forceMount
-              sideOffset={5}
-            >
+            <DropdownMenu.Content align={'end'} asChild forceMount sideOffset={5}>
               <motion.div
-                animate={"open"}
+                animate={'open'}
                 className={cn(
-                  "bg-dark-500 min-w-40 text-white rounded-sm p-3 gap-3 border border-dark-100",
-                  "relative",
-                  className,
+                  'bg-dark-500 min-w-40 text-white rounded-sm p-3 gap-3 border border-dark-100',
+                  'relative',
+                  className
                 )}
-                initial={"closed"}
+                initial={'closed'}
                 variants={variants}
               >
                 <DropdownContent content={items || children} />
@@ -97,5 +86,5 @@ export const Dropdown = ({
         </DropdownMenu.Portal>
       </DropdownMenu.Root>
     </div>
-  );
-};
+  )
+}

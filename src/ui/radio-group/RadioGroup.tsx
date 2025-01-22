@@ -1,52 +1,41 @@
-"use client";
-import React, { ChangeEvent, forwardRef, useState } from "react";
+'use client'
+import React, { ChangeEvent, forwardRef, useState } from 'react'
 
-import { cn } from "@byte-creators/utils";
+import { cn } from '@byte-creators/utils'
 
-import { Radio } from "./Radio";
+import { Radio } from './Radio'
 
 type RadioOptions<T extends number | string> = {
-  disabled?: boolean;
-  label: string;
-  name?: string;
-  value: T;
-};
+  disabled?: boolean
+  label: string
+  name?: string
+  value: T
+}
 
 export type RadioGroupProps<T extends number | string> = {
-  defaultValue?: T;
-  disabled?: boolean;
-  error?: string;
-  name?: string;
-  onChange?: (value: T) => void;
-  options: RadioOptions<T>[];
-};
+  defaultValue?: T
+  disabled?: boolean
+  error?: string
+  name?: string
+  onChange?: (value: T) => void
+  options: RadioOptions<T>[]
+}
 
-export const RadioGroup = forwardRef(function RadioGroup<
-  T extends number | string,
->(
-  {
-    defaultValue,
-    disabled,
-    error,
-    name = "radioName",
-    onChange,
-    options,
-  }: RadioGroupProps<T>,
-  ref: React.Ref<HTMLInputElement>,
+export const RadioGroup = forwardRef(function RadioGroup<T extends number | string>(
+  { defaultValue, disabled, error, name = 'radioName', onChange, options }: RadioGroupProps<T>,
+  ref: React.Ref<HTMLInputElement>
 ) {
-  const [selectedValue, setSelectedValue] = useState<T | undefined>(
-    defaultValue,
-  );
+  const [selectedValue, setSelectedValue] = useState<T | undefined>(defaultValue)
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const value = e.target.value as T;
+    const value = e.target.value as T
 
-    setSelectedValue(value);
-    onChange && onChange(value);
-  };
+    setSelectedValue(value)
+    onChange && onChange(value)
+  }
 
   return (
-    <div className={cn("relative")}>
+    <div className={cn('relative')}>
       {options.map((option, i) => {
         return (
           <Radio
@@ -59,13 +48,11 @@ export const RadioGroup = forwardRef(function RadioGroup<
             ref={ref}
             value={option.value as number | string}
           />
-        );
+        )
       })}
-      <span className={cn("absolute text-danger-500 -bottom-4")}>
-        {error && error}
-      </span>
+      <span className={cn('absolute text-danger-500 -bottom-4')}>{error && error}</span>
     </div>
-  );
+  )
 }) as <T extends number | string>(
-  props: { ref?: React.Ref<HTMLInputElement> } & RadioGroupProps<T>,
-) => JSX.Element;
+  props: { ref?: React.Ref<HTMLInputElement> } & RadioGroupProps<T>
+) => JSX.Element

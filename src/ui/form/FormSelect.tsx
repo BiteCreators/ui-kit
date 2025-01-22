@@ -1,10 +1,10 @@
-"use client";
-import { FieldValues, useController } from "react-hook-form";
+'use client'
+import { FieldValues, useController } from 'react-hook-form'
 
-import { Select, SelectProps } from "../select/Select";
-import { FormFieldProps } from "./types";
+import { Select, SelectProps } from '../select/Select'
+import { FormFieldProps } from './types'
 
-type Props<T extends FieldValues> = FormFieldProps<T> & SelectProps;
+type Props<T extends FieldValues> = FormFieldProps<T> & SelectProps
 
 export const FormSelect = <T extends FieldValues>({
   control,
@@ -14,7 +14,7 @@ export const FormSelect = <T extends FieldValues>({
   rules,
   ...props
 }: Props<T>) => {
-  const { field, fieldState } = useController({ control, name, rules });
+  const { field, fieldState } = useController({ control, name, rules })
 
   return (
     <Select
@@ -22,12 +22,12 @@ export const FormSelect = <T extends FieldValues>({
       defaultValue={defaultValue}
       error={error ?? fieldState.error?.message}
       {...props}
-      onValueChange={(value) => {
-        field.onChange(value);
+      onValueChange={value => {
+        field.onChange(value)
         if (props.onValueChange) {
-          props.onValueChange(value);
+          props.onValueChange(value)
         }
       }}
     />
-  );
-};
+  )
+}

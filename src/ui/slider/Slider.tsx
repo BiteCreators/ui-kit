@@ -1,23 +1,23 @@
-"use client";
-import React, { ReactNode, useEffect } from "react";
+'use client'
+import React, { ReactNode, useEffect } from 'react'
 
-import { cn } from "@byte-creators/utils";
+import { cn } from '@byte-creators/utils'
 
-import { ArrowIosBack, ArrowIosForward } from "../../assets/icons/components";
-import { useSlider } from "./useSlider";
+import { ArrowIosBack, ArrowIosForward } from '../../assets/icons/components'
+import { useSlider } from './useSlider'
 
 type Props = {
-  duration?: number;
-  height?: string;
-  setCurrentIndex?: (currentIndex: number) => void;
-  slides: ReactNode[];
-  stylesSlide?: string;
-  stylesSlider?: string;
-};
+  duration?: number
+  height?: string
+  setCurrentIndex?: (currentIndex: number) => void
+  slides: ReactNode[]
+  stylesSlide?: string
+  stylesSlider?: string
+}
 
 export const Slider = ({
   duration = 4000,
-  height = "560",
+  height = '560',
   setCurrentIndex,
   slides,
   stylesSlide,
@@ -32,46 +32,43 @@ export const Slider = ({
     isPaused,
     nextSlide,
     prevSlide,
-  } = useSlider(slides);
+  } = useSlider(slides)
 
   useEffect(() => {
     if (duration !== 0) {
       if (!isPaused) {
-        const interval = setInterval(nextSlide, duration);
+        const interval = setInterval(nextSlide, duration)
 
-        return () => clearInterval(interval);
+        return () => clearInterval(interval)
       }
     }
-  }, [isPaused, duration]);
+  }, [isPaused, duration])
 
   useEffect(() => {
     if (setCurrentIndex) {
-      setCurrentIndex(currentIndex);
+      setCurrentIndex(currentIndex)
     }
-  }, [currentIndex, setCurrentIndex]);
+  }, [currentIndex, setCurrentIndex])
 
   const stylesBtn =
-    "absolute z-10 bg-gray-800 bg-opacity-40 top-1/2 -translate-y-1/2 p-3 cursor-pointer duration-300 ease-in-out md:block hidden hover:bg-gray-700 hover:opacity-85";
+    'absolute z-10 bg-gray-800 bg-opacity-40 top-1/2 -translate-y-1/2 p-3 cursor-pointer duration-300 ease-in-out md:block hidden hover:bg-gray-700 hover:opacity-85'
 
-  const isNavigation = slides.length > 1;
+  const isNavigation = slides.length > 1
 
   return (
     <div
       {...handlers}
-      className={cn(
-        `relative w-full h-[${height}px] overflow-hidden`,
-        stylesSlider,
-      )}
+      className={cn(`relative w-full h-[${height}px] overflow-hidden`, stylesSlider)}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
       {isNavigation ? (
-        <button className={cn("left-3", stylesBtn)} onClick={prevSlide}>
-          <ArrowIosBack viewBox={"5 5 14 14"} />
+        <button className={cn('left-3', stylesBtn)} onClick={prevSlide}>
+          <ArrowIosBack viewBox={'5 5 14 14'} />
         </button>
       ) : null}
       <ul
-        className={"flex w-full h-full transition-transform duration-500"}
+        className={'flex w-full h-full transition-transform duration-500'}
         style={{ transform: `translateX(-${currentIndex * 100}%)` }}
       >
         {slides.map((slide, i) => (
@@ -81,23 +78,21 @@ export const Slider = ({
         ))}
       </ul>
       {isNavigation ? (
-        <button className={cn("right-3", stylesBtn)} onClick={nextSlide}>
-          <ArrowIosForward viewBox={"5 5 14 14"} />
+        <button className={cn('right-3', stylesBtn)} onClick={nextSlide}>
+          <ArrowIosForward viewBox={'5 5 14 14'} />
         </button>
       ) : null}
       <div
         className={cn(
-          "absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-3 p-2 bg-gray-700",
-          isNavigation ? "bg-opacity-50" : "bg-opacity-0",
+          'absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-3 p-2 bg-gray-700',
+          isNavigation ? 'bg-opacity-50' : 'bg-opacity-0'
         )}
       >
         {isNavigation
           ? slides.map((_, i) => (
               <button
                 className={`w-2 h-2 rounded-full
-              ${
-                i === currentIndex ? "bg-primary-500" : "bg-light-100"
-              } hover:bg-primary-500`}
+              ${i === currentIndex ? 'bg-primary-500' : 'bg-light-100'} hover:bg-primary-500`}
                 key={i}
                 onClick={() => goToSlide(i)}
               />
@@ -105,5 +100,5 @@ export const Slider = ({
           : null}
       </div>
     </div>
-  );
-};
+  )
+}
