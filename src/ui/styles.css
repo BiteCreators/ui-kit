@@ -126,12 +126,15 @@
 }
 
 .linear-loader-bar {
-    height: 100%;
+    --c: linear-gradient(90deg, #397df6 0%, #234e99 100%);
+
     width: 100%;
-    --c: linear-gradient(90deg, #397cf4 0%, #397cf4 100%);
+    height: 100%;
+
+    background: var(--c), var(--c), #171717;
     background-repeat: no-repeat;
-    background: var(--c), var(--c), #2b2b2b;
     background-size: 60% 100%;
+
     animation: loadBar 3s infinite;
 }
 
