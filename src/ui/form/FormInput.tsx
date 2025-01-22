@@ -1,21 +1,21 @@
-"use client";
-import { ComponentPropsWithoutRef } from "react";
-import { FieldValues, useController } from "react-hook-form";
+'use client'
+import { ComponentPropsWithoutRef } from 'react'
+import { FieldValues, useController } from 'react-hook-form'
 
-import { Input } from "../input/Input";
-import { FormFieldProps } from "./types";
+import { Input } from '../input/Input'
+import { FormFieldProps } from './types'
 
 type Props<T extends FieldValues> = {
-  inputType?: "default" | "reveal" | "search";
-  label?: string;
-} & ComponentPropsWithoutRef<"input"> &
-  FormFieldProps<T>;
+  inputType?: 'default' | 'reveal' | 'search'
+  label?: string
+} & ComponentPropsWithoutRef<'input'> &
+  FormFieldProps<T>
 
 export const FormInput = <T extends FieldValues>({
   control,
   defaultValue,
   error,
-  inputType = "default",
+  inputType = 'default',
   label,
   name,
   rules,
@@ -25,7 +25,7 @@ export const FormInput = <T extends FieldValues>({
     control,
     name,
     rules,
-  });
+  })
 
   return (
     <Input
@@ -35,5 +35,5 @@ export const FormInput = <T extends FieldValues>({
       label={label}
       {...rest}
     />
-  );
-};
+  )
+}

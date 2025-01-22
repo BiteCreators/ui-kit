@@ -1,16 +1,16 @@
-"use client";
+'use client'
 
-import React, { ComponentProps } from "react";
-import { FieldValues, useController } from "react-hook-form";
+import React, { ComponentProps } from 'react'
+import { FieldValues, useController } from 'react-hook-form'
 
-import { Checkbox } from "../checkbox/Checkbox";
-import { FormFieldProps } from "./types";
+import { Checkbox } from '../checkbox/Checkbox'
+import { FormFieldProps } from './types'
 
 type Props<T extends FieldValues> = {
-  error?: string;
-  text?: React.ReactNode;
-} & ComponentProps<"input"> &
-  FormFieldProps<T>;
+  error?: string
+  text?: React.ReactNode
+} & ComponentProps<'input'> &
+  FormFieldProps<T>
 
 export const FormCheckbox = <T extends FieldValues>({
   control,
@@ -24,7 +24,7 @@ export const FormCheckbox = <T extends FieldValues>({
   const {
     field: { onChange, value, ...field },
     fieldState,
-  } = useController({ control, name, rules });
+  } = useController({ control, name, rules })
 
   return (
     <Checkbox
@@ -35,5 +35,5 @@ export const FormCheckbox = <T extends FieldValues>({
       {...props}
       error={error ?? fieldState.error?.message}
     />
-  );
-};
+  )
+}

@@ -1,24 +1,24 @@
-"use client";
+'use client'
 
-import React from "react";
-import { FieldValues, useController } from "react-hook-form";
+import React from 'react'
+import { FieldValues, useController } from 'react-hook-form'
 
-import Link from "next/link";
+import Link from 'next/link'
 
-import { DatePicker } from "../datepicker/DatePicker";
-import { Trans } from "../trans/Trans";
-import { FormFieldProps } from "./types";
+import { DatePicker } from '../datepicker/DatePicker'
+import { Trans } from '../trans/Trans'
+import { FormFieldProps } from './types'
 
 type Props<T extends FieldValues> = {
-  className?: string;
-  disabled?: boolean;
-  error?: React.ReactNode;
-  inputClassName?: string;
-  label?: string;
-  mode: "range" | "single";
-  placeholder?: string;
-  required?: boolean;
-} & FormFieldProps<T>;
+  className?: string
+  disabled?: boolean
+  error?: React.ReactNode
+  inputClassName?: string
+  label?: string
+  mode: 'range' | 'single'
+  placeholder?: string
+  required?: boolean
+} & FormFieldProps<T>
 
 export const FormDatePicker = <T extends FieldValues>({
   control,
@@ -29,20 +29,20 @@ export const FormDatePicker = <T extends FieldValues>({
   const {
     field: { onChange, value, ...field },
     fieldState,
-  } = useController({ control, name });
+  } = useController({ control, name })
 
   const fieldError = fieldState.error?.message && (
     <Trans
       tags={{
-        1: (text) => (
-          <Link className={"underline"} href={"/auth/sign-up/privacy-policy"}>
+        1: text => (
+          <Link className={'underline'} href={'/auth/sign-up/privacy-policy'}>
             {text}
           </Link>
         ),
       }}
       text={fieldState.error?.message}
     ></Trans>
-  );
+  )
 
   return (
     <DatePicker
@@ -52,5 +52,5 @@ export const FormDatePicker = <T extends FieldValues>({
       {...props}
       error={error ?? fieldError}
     />
-  );
-};
+  )
+}

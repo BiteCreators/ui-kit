@@ -1,26 +1,26 @@
-"use client";
-import { ReactNode, useEffect, useState } from "react";
-import ReactDOM from "react-dom";
+'use client'
+import { ReactNode, useEffect, useState } from 'react'
+import ReactDOM from 'react-dom'
 
-import { cn } from "@byte-creators/utils";
-import * as Dialog from "@radix-ui/react-dialog";
+import { cn } from '@byte-creators/utils'
+import * as Dialog from '@radix-ui/react-dialog'
 
-import { ModalContent } from "./ModalContent";
+import { ModalContent } from './ModalContent'
 
 type Props = {
-  children: ReactNode;
-  className?: string;
-  disabledButton?: boolean;
-  handleBack?: () => void;
-  handleInteractOutside?: (e: any) => void;
-  handleNext?: () => void;
-  isOpen: boolean;
-  maxWidth?: string;
-  mode: "custom" | "default" | "outside" | "withStep";
-  nextButtonTitle?: string;
-  onOpenChange?: (open: boolean) => void;
-  title?: ReactNode | string;
-};
+  children: ReactNode
+  className?: string
+  disabledButton?: boolean
+  handleBack?: () => void
+  handleInteractOutside?: (e: any) => void
+  handleNext?: () => void
+  isOpen: boolean
+  maxWidth?: string
+  mode: 'custom' | 'default' | 'outside' | 'withStep'
+  nextButtonTitle?: string
+  onOpenChange?: (open: boolean) => void
+  title?: ReactNode | string
+}
 
 export const Modal = ({
   children,
@@ -36,20 +36,20 @@ export const Modal = ({
   onOpenChange,
   title,
 }: Props) => {
-  const [isMounted, setIsMounted] = useState(false);
+  const [isMounted, setIsMounted] = useState(false)
 
   useEffect(() => {
-    setIsMounted(true);
-  }, []);
+    setIsMounted(true)
+  }, [])
   const modalContent = (
     <Dialog.Root onOpenChange={onOpenChange} open={isOpen}>
-      <Dialog.Overlay className={cn("fixed inset-0 bg-black/50 z-30")} />
+      <Dialog.Overlay className={cn('fixed inset-0 bg-black/50 z-30')} />
       <Dialog.Content
         className={cn(
-          "z-30 fixed top-1/2 left-1/2 bg-dark-300 rounded-sm transform border border-dark-100",
-          "-translate-x-1/2 -translate-y-1/2",
-          maxWidth ? maxWidth : "max-w-[480px]",
-          className,
+          'z-30 fixed top-1/2 left-1/2 bg-dark-300 rounded-sm transform border border-dark-100',
+          '-translate-x-1/2 -translate-y-1/2',
+          maxWidth ? maxWidth : 'max-w-[480px]',
+          className
         )}
         onInteractOutside={handleInteractOutside}
       >
@@ -65,11 +65,11 @@ export const Modal = ({
         </ModalContent>
       </Dialog.Content>
     </Dialog.Root>
-  );
+  )
 
   if (!isMounted) {
-    return null;
+    return null
   }
 
-  return ReactDOM.createPortal(modalContent, document.body);
-};
+  return ReactDOM.createPortal(modalContent, document.body)
+}

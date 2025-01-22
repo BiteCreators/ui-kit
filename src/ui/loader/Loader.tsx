@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react'
 
 type Props = {
-  fullScreen?: boolean;
-};
+  fullScreen?: boolean
+}
 export const Loader = ({ fullScreen }: Props) => {
   return (
-    <div className={fullScreen ? "wrapperLoader" : ""}>
-      <span className={"loader"}></span>
+    <div className={fullScreen ? 'wrapperLoader' : ''}>
+      <span className={'loader'}></span>
     </div>
-  );
-};
+  )
+}

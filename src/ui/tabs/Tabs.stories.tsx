@@ -1,48 +1,47 @@
-import { action } from "@storybook/addon-actions";
-import { Meta, StoryObj } from "@storybook/react";
+import { action } from '@storybook/addon-actions'
+import { Meta, StoryObj } from '@storybook/react'
 
-import { TabsBase } from "./Tabs";
-import { tabsData } from "./tabsData";
+import { TabsBase } from './Tabs'
+import { tabsData } from './tabsData'
 
 const meta = {
   argTypes: {
     disabled: {
-      description:
-        "Варианты отображения вкладок - Заблокирована | Незаблокирована.",
+      description: 'Варианты отображения вкладок - Заблокирована | Незаблокирована.',
     },
     onClick: {
-      description: "Функция, вызываемая при клике на вкладку.",
+      description: 'Функция, вызываемая при клике на вкладку.',
     },
     tabsData: {
       control: { disable: true },
-      description: "Обязательный Props принимающий массив с данными.",
+      description: 'Обязательный Props принимающий массив с данными.',
     },
   },
   component: TabsBase,
   parameters: {
-    layout: "centered",
+    layout: 'centered',
   },
-  tags: ["autodocs"],
-} satisfies Meta<typeof TabsBase>;
+  tags: ['autodocs'],
+} satisfies Meta<typeof TabsBase>
 
-export default meta;
+export default meta
 
 export const Default: StoryObj<typeof TabsBase> = {
   args: {
-    onClick: action("click tab"),
+    onClick: action('click tab'),
     tabsData,
   },
   parameters: {
     docs: {
       description: {
-        story: "Default вариант вкладок",
+        story: 'Default вариант вкладок',
       },
     },
   },
-  render: (args) => {
-    return <TabsBase {...args} />;
+  render: args => {
+    return <TabsBase {...args} />
   },
-};
+}
 
 export const Disabled: StoryObj<typeof TabsBase> = {
   args: {
@@ -52,8 +51,8 @@ export const Disabled: StoryObj<typeof TabsBase> = {
   parameters: {
     docs: {
       description: {
-        story: "Disabled вариант вкладок",
+        story: 'Disabled вариант вкладок',
       },
     },
   },
-};
+}
