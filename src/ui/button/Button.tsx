@@ -1,4 +1,4 @@
-import React, { ComponentProps } from 'react'
+import { ComponentProps } from 'react'
 
 import { cn } from '@byte-creators/utils'
 import { Slot } from '@radix-ui/react-slot'
@@ -17,6 +17,7 @@ export const Button = ({ asChild, className, variant = 'primary', ...props }: Pr
         `font-weight-600 w-auto py-1.5 px-4 rounded-sm text-md text-slate-50`,
         'disabled:opacity-50',
         'focus:outline-primary-900 focus:outline-2 focus:outline',
+        'hover:transition-all hover:duration-300 duration-300',
         variant === 'primary' && [
           'bg-primary-500',
           'global-hover:hover:bg-primary-700',
