@@ -7,7 +7,7 @@ const meta = {
   component: PostCard,
 } satisfies Meta<typeof PostCard>
 
-type Story = StoryObj<typeof meta>
+type Story = StoryObj<typeof PostCard>
 
 export const Default: Story = {
   args: argsForStories,
