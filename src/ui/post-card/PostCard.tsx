@@ -36,7 +36,7 @@ export const PostCard = ({
   })
 
   return (
-    <div className={'hover:scale-105 duration-75'}>
+    <div className={'hover:scale-105 duration-75 max-w-[400px]'}>
       <div className={'cursor-pointer'}>
         {!postImageUrl ? (
           <Link href={`/profile/${ownerId}/publications/${postId}`}>

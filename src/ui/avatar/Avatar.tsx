@@ -1,8 +1,8 @@
 import { cn } from '@byte-creators/utils'
 import Link from 'next/link'
 
+import example from '../../assets/exampleAvatar.png'
 import { Close } from '../../assets/icons/components'
-import example from './examples/exampleAvatar.png'
 
 type Props = {
   alt?: string
