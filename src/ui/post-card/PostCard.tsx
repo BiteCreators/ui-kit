@@ -1,7 +1,8 @@
 import { useGetRelativeTime, useShowMore } from '@byte-creators/utils'
 import Link from 'next/link'
 
-import { Image } from '../../assets/icons/components'
+import { Block, Image } from '../../assets/icons/components'
+import { Button } from '../button/Button'
 import { Typography } from '../typography/Typography'
 import { UserProfile } from '../user-profile/UserProfile'
 
@@ -9,6 +10,8 @@ type Props = {
   avatarOwner: string
   createdAt: string
   description: string
+  isAdmin: boolean
+  onClickBlockButton?: () => void
   ownerId: number
   postId: number
   postImageHight: number
@@ -21,6 +24,8 @@ export const PostCard = ({
   avatarOwner,
   createdAt,
   description,
+  isAdmin,
+  onClickBlockButton,
   ownerId,
   postId,
   postImageHight,
@@ -55,8 +60,13 @@ export const PostCard = ({
           </Link>
         )}
       </div>
-      <div className={'mt-3 flex gap-3 items-center'}>
+      <div className={'mt-3 flex gap-3 items-center justify-between'}>
         <UserProfile avatarUrl={avatarOwner} profileId={ownerId} userName={userName} />
+        {isAdmin && (
+          <Button className={'pr-0'} onClick={onClickBlockButton} variant={'icon'}>
+            <Block />
+          </Button>
+        )}
       </div>
       <Typography className={'mt-3 text-light-900'} variant={'small-text'}>
         {relativeTime}

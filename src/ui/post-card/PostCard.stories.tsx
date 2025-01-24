@@ -13,6 +13,10 @@ export const Default: Story = {
   args: argsForStories,
 }
 
+export const DefaultAdmin: Story = {
+  args: { ...argsForStories, isAdmin: true },
+}
+
 export const WithoutImage: Story = {
   args: {
     ...argsForStories,
