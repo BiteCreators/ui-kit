@@ -5,9 +5,13 @@ type Props = {
 }
 
 export const LinearLoader = ({ isLoading }: Props) => {
+  if (!isLoading) {
+    return null
+  }
+
   return (
     <div className={`linear-loader ${isLoading ? 'active' : ''}`}>
-      <div className="linear-loader-bar" />
+      <div className={'linear-loader-bar'} />
     </div>
   )
 }

@@ -1,3 +1,6 @@
+import React, { useState } from 'react'
+import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
+
 import { cn } from '@byte-creators/utils'
 import Link from 'next/link'
 
@@ -29,36 +32,55 @@ export const Avatar = ({
   rounded = true,
   showClose = false,
 }: Props) => {
+  const [isLoaded, setIsLoaded] = useState(false)
+
   const closeHandler = () => {
     if (onClose) {
       onClose()
     }
   }
+
   const AvatarImage = (
-    <span className={cn(['relative inline-block', className])}>
-      <img
-        alt={alt}
-        className={cn(imgStyles, [rounded && 'rounded-full'])}
-        src={avatarURL || example}
-      />
-      {showClose && (
-        <span
-          className={cn([
-            'bg-dark-700 flex justify-center items-center absolute w-9 h-9 right-0 top-[4%]',
-            rounded && 'rounded-full',
-          ])}
-          onClick={closeHandler}
-        >
+    <SkeletonTheme baseColor={'#3f3e3e'} highlightColor={'#575656'}>
+      <span
+        className={cn(['relative inline-block', className])}
+        style={{ height: '100%', width: '100%' }}
+      >
+        {!isLoaded && (
+          <Skeleton
+            circle={rounded}
+            containerClassName={'absolute top-0 left-0 w-full h-full'}
+            height={'100%'}
+            width={'100%'}
+          />
+        )}
+        <img
+          alt={alt}
+          className={cn(imgStyles, [rounded && 'rounded-full'])}
+          onError={() => setIsLoaded(true)}
+          onLoad={() => setIsLoaded(true)}
+          src={avatarURL || example}
+          style={{ visibility: isLoaded ? 'visible' : 'hidden' }}
+        />
+        {showClose && (
           <span
-            className={
-              'flex items-center justify-center bg-danger-500 rounded-full hover:cursor-pointer'
-            }
+            className={cn([
+              'bg-dark-700 flex justify-center items-center absolute w-9 h-9 right-0 top-[4%]',
+              rounded && 'rounded-full',
+            ])}
+            onClick={closeHandler}
           >
-            <Close />
+            <span
+              className={
+                'flex items-center justify-center bg-danger-500 rounded-full hover:cursor-pointer'
+              }
+            >
+              <Close />
+            </span>
           </span>
-        </span>
-      )}
-    </span>
+        )}
+      </span>
+    </SkeletonTheme>
   )
 
   return isNextLink && href ? (

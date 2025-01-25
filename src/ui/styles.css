@@ -1,153 +1,152 @@
 /* loader */
 
-.wrapperLoader {
-  position: absolute;
-  z-index: 1000;
-  top: 0;
-  left: 0;
+.wrapperLoader{
+    position: absolute;
+    z-index: 1000;
+    top: 0;
+    left: 0;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  width: 100vw;
-  height: 100vh;
+    width: 100vw;
+    height: 100vh;
 
-  background-color: #0d0d0d;
+    background-color: #0D0D0D;
 }
 
 .loader {
-  display: inline-block;
+    display: inline-block;
 
-  box-sizing: border-box;
-  width: 48px;
-  height: 48px;
+    box-sizing: border-box;
+    width: 48px;
+    height: 48px;
 
-  border-top: 4px solid #fff;
-  border-right: 4px solid transparent;
-  border-radius: 50%;
+    border-top: 4px solid #fff;
+    border-right: 4px solid transparent;
+    border-radius: 50%;
 
-  animation: rotation 1s linear infinite;
+    animation: rotation 1s linear infinite;
 }
 
 .loader::after {
-  content: '';
+    content: '';
 
-  position: absolute;
-  top: 0;
-  left: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
 
-  box-sizing: border-box;
-  width: 48px;
-  height: 48px;
+    box-sizing: border-box;
+    width: 48px;
+    height: 48px;
 
-  border-bottom: 4px solid #397cf4;
-  border-left: 4px solid transparent;
-  border-radius: 50%;
+    border-bottom: 4px solid #397cf4;
+    border-left: 4px solid transparent;
+    border-radius: 50%;
 }
 
 @keyframes rotation {
-  0% {
-    transform: rotate(0deg);
-  }
+    0% {
+        transform: rotate(0deg);
+    }
 
-  100% {
-    transform: rotate(360deg);
-  }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 /* recaptcha */
 
 .recaptchaContainer {
-  overflow: hidden;
-  display: inline-block;
+    overflow: hidden;
+    display: inline-block;
 
-  width: 301px;
-  height: 75px;
-  padding: 0;
+    width: 301px;
+    height: 75px;
+    padding: 0;
 
-  border-radius: 4px;
+    border-radius: 4px;
 }
 
 /* select */
 
 @media (width <= 768px) {
-  .selectValue span {
-    display: none;
-  }
+    .selectValue span {
+        display: none
+    }
 
-  .selectHidden {
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
+    .selectHidden {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
 }
 
 /* TextAreaScroll */
 
 .custom-textarea {
-  touch-action: none;
-  user-select: none;
+    touch-action: none;
+    user-select: none;
 
-  height: 0.75rem;
+    height: 0.75rem;
 
-  border-top-color: transparent;
-  border-top-width: 1px;
+    border-top-color: transparent;
+    border-top-width: 1px;
 }
 
 .custom-textarea::-webkit-scrollbar {
-  width: 4px;
+    width: 4px;
 }
 
 .custom-textarea::-webkit-scrollbar-track {
-  background-color: rgb(23 23 23);
+    background-color: rgb(23 23 23);
 }
 
 .custom-textarea::-webkit-scrollbar-thumb {
-  cursor: default;
-  background-color: rgb(51 51 51);
-  border-radius: 2px;
+    cursor: default;
+    background-color: rgb(51 51 51);
+    border-radius: 2px;
 }
 
 .custom-textarea::-webkit-scrollbar-thumb:hover {
-  background-color: rgb(141 144 148);
+    background-color: rgb(141 144 148);
 }
 
+
 .linear-loader {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 4px;
-  background-color: transparent;
-  overflow: hidden;
-  z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-color: transparent;
+    overflow: hidden;
+    z-index: 1000;
 }
 
 .linear-loader-bar {
-  height: 100%;
-  width: 100%;
-  --c: linear-gradient(90deg, #397cf4 0%, #397cf4 100%);
-  background-repeat: no-repeat;
-  background: var(--c), var(--c), #2b2b2b;
-  background-size: 60% 100%;
-  animation: loadBar 3s infinite;
+    --c: linear-gradient(90deg, #397df6 0%, #234e99 100%);
+
+    width: 100%;
+    height: 100%;
+
+    background: var(--c), var(--c), #171717;
+    background-repeat: no-repeat;
+    background-size: 60% 100%;
+
+    animation: loadBar 3s infinite;
 }
 
 @keyframes loadBar {
-  0% {
-    background-position:
-      -150% 0,
-      -150% 0;
-  }
-  66% {
-    background-position:
-      250% 0,
-      -150% 0;
-  }
-  100% {
-    background-position:
-      250% 0,
-      250% 0;
-  }
+    0% {
+        background-position: -150% 0, -150% 0;
+    }
+    66% {
+        background-position: 250% 0, -150% 0;
+    }
+    100% {
+        background-position: 250% 0, 250% 0;
+    }
 }
+
