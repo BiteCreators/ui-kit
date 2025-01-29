@@ -10,7 +10,7 @@ type Props = {
   avatarOwner: string
   createdAt: string
   description: string
-  isAdmin: boolean
+  isAdmin?: boolean
   onClickBlockButton?: () => void
   ownerId: number
   postId: number
@@ -63,7 +63,7 @@ export const PostCard = ({
       <div className={'mt-3 flex gap-3 items-center justify-between'}>
         <UserProfile avatarUrl={avatarOwner} profileId={ownerId} userName={userName} />
         {isAdmin && (
-          <Button className={'pr-0'} onClick={onClickBlockButton} variant={'icon'}>
+          <Button className={'pr-0 bg-transparent'} onClick={onClickBlockButton} variant={'icon'}>
             <Block />
           </Button>
         )}
