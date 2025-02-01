@@ -68,7 +68,7 @@ export const Modal = ({
   )
 
   if (!isMounted) {
-    return null
+    return modalContent
   }
 
   return ReactDOM.createPortal(modalContent, document.body)
