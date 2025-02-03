@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import { ReactNode } from 'react'
 
 import { cn } from '@byte-creators/utils'
 import * as Tabs from '@radix-ui/react-tabs'
@@ -46,7 +46,7 @@ export const TabsBase = <T extends string = string>({
               <Tabs.Trigger
                 className={cn(
                   'flex-1 py-1.5 px-2 h-auto cursor-pointer rounded-sm',
-                  'text-md text-dark-100 font-weight-600 font-primary hover:text-primary-500',
+                  'text-md text-dark-100 font-weight-600 hover:text-primary-500',
                   'global-hover:hover:bg-[#0A0E14] active:bg-[#1C2431]',
                   'focus:outline-none focus:outline-primary-700 !outline-offset-0',
                   'disabled:cursor-default disabled:global-hover:hover:bg-transparent',
