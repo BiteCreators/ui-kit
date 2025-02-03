@@ -8,8 +8,6 @@ export const argsForStories = {
     'Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore quasi eligendi, commodi aperiam quo accusamus ratione omnis odit! Tempore dolor inventore porro nihil minima laudantium cum omnis maxime voluptatibus sed.',
   ownerId: 1,
   postId: 1,
-  postImageHight: 1440,
   postImageUrl: exampleImage.src,
-  postImageWidth: 1440,
   userName: 'Dmitry',
 }

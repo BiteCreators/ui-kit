@@ -1,6 +1,7 @@
-import { useGetRelativeTime, useShowMore } from '@byte-creators/utils'
-import Link from 'next/link'
+import { cn, useGetRelativeTime, useShowMore } from '@byte-creators/utils'
 import { motion } from 'framer-motion'
+import Link from 'next/link'
+
 import { Block, Image } from '../../assets/icons/components'
 import { Button } from '../button/Button'
 import { Typography } from '../typography/Typography'
@@ -13,10 +14,10 @@ type Props = {
   isAdmin?: boolean
   onClickBlockButton?: () => void
   ownerId: number
+  postContainerHeight?: number
   postId: number
-  postImageHight: number
   postImageUrl: string
-  postImageWidth: number
+  postSize?: number
   userName: string
 }
 
@@ -27,10 +28,10 @@ export const PostCard = ({
   isAdmin,
   onClickBlockButton,
   ownerId,
+  postContainerHeight = 400,
   postId,
-  postImageHight,
   postImageUrl,
-  postImageWidth,
+  postSize = 235,
   userName,
 }: Props) => {
   const { getRelativeTime } = useGetRelativeTime()
@@ -39,53 +40,122 @@ export const PostCard = ({
   const { collapsable, isCollapsed, textToShow, toggleShowMore } = useShowMore({
     text: description,
   })
+  //todo: put in utils
+  const textLength = textToShow.length
+  const maxTextLength = 500
+  let k1 = -50
+  let k2 = 15
+
+  if (postSize > 300 && postSize <= 350) {
+    k1 = -40
+    k2 = 10
+  }
+  if (postSize > 350) {
+    k1 = -30
+    k2 = 5
+  }
+
+  const calculateTextHeight = (length: number) => {
+    const ratio = length / maxTextLength
+
+    if (ratio < 0.5) {
+      return k1 - 10
+    }
+    if (ratio < 0.6) {
+      return 2 * k1 - 10
+    }
+    if (ratio < 0.7) {
+      return 3 * k1 - 10
+    }
+    if (ratio < 0.9) {
+      return 4 * k1
+    }
+
+    return 4 * k1 - 35
+  }
+
+  const calculateImageHeight = (length: number) => {
+    const ratio = length / maxTextLength
+
+    if (ratio < 0.5) {
+      return `${k2}%`
+    }
+    if (ratio < 0.6) {
+      return `${2.6 * k2}%`
+    }
+    if (ratio < 0.7) {
+      return `${4 * k2}%`
+    }
+    if (ratio < 0.9) {
+      return `${5 * k2}%`
+    }
+
+    return `${6 * k2}%`
+  }
+
+  const textCollapsableHeight = calculateTextHeight(textLength)
+  const imgCollapsableHeight = calculateImageHeight(textLength)
 
   return (
-    <div className={'max-w-[400px]'} style={{ position: 'relative' }}>
-      <div className={'cursor-pointer'}>
-        {!postImageUrl ? (
-          <Link href={`/profile/${ownerId}/publications/${postId}`}>
-            <div className={'flex w-full justify-center items-center bg-dark-500 h-[234px]'}>
-              <Image />
-            </div>
-          </Link>
-        ) : (
-          <Link href={`/profile/${ownerId}/publications/${postId}`}>
-            <motion.div
-              style={{
-                height: postImageHight,
-                maxHeight: '400px',
-                overflow: 'hidden',
-                position: 'relative',
-              }}
-            >
+    <div
+      style={{
+        height: postContainerHeight,
+        marginBottom: 30,
+        maxWidth: postSize,
+        position: 'relative',
+      }}
+    >
+      <div className={cn('cursor-pointer')}>
+        <Link href={`/profile/${ownerId}/publications/${postId}`}>
+          <motion.div
+            style={{
+              marginBottom: '12px',
+              overflow: 'hidden',
+              position: 'relative',
+            }}
+          >
+            {postImageUrl ? (
               <motion.img
                 alt={postImageUrl}
-                animate={{ y: isCollapsed ? 0 : -50 }} // Двигаем изображение
-                height={postImageHight}
+                animate={{ y: isCollapsed ? 0 : -10 }}
                 initial={{ y: 0 }}
                 src={postImageUrl}
                 style={{
-                  clipPath: isCollapsed ? 'none' : 'inset(0 0 50% 0)', // Обрезаем изображение
+                  clipPath: isCollapsed ? 'none' : `inset(0 0 ${imgCollapsableHeight} 0)`,
+                  marginBottom: '12px',
                   objectFit: 'cover',
                 }}
                 transition={{ stiffness: 100, type: 'spring' }}
-                width={postImageWidth}
               />
-            </motion.div>
-          </Link>
-        )}
+            ) : (
+              <motion.div
+                animate={{ y: isCollapsed ? 0 : -10 }}
+                className={cn('flex justify-center items-center bg-dark-500')}
+                initial={{ y: 0 }}
+                style={{
+                  clipPath: isCollapsed ? 'none' : `inset(0 0 ${imgCollapsableHeight} 0)`,
+                  height: `${postSize}px`,
+                  marginBottom: '12px',
+                  objectFit: 'cover',
+                }}
+                transition={{ stiffness: 100, type: 'spring' }}
+              >
+                <Image />
+              </motion.div>
+            )}
+          </motion.div>
+        </Link>
       </div>
 
       <motion.div
         animate={{
-          y: isCollapsed ? 0 : -30, // Поднимаем весь блок, когда раскрываем текст
+          y: isCollapsed ? 0 : textCollapsableHeight,
         }}
-        initial={{ y: 0 }} // Изначально все элементы находятся на одном уровне
-        style={{ overflow: 'hidden' }}
+        initial={{ y: 0 }}
+        style={{ marginTop: '12px', overflow: 'hidden' }}
         transition={{ duration: 0.3 }}
       >
-        <div className={'mt-3 flex gap-3 items-center justify-between'}>
+        <div className={cn('flex gap-3 items-center justify-between')}>
           <UserProfile avatarUrl={avatarOwner} profileId={ownerId} userName={userName} />
           {isAdmin && (
             <Button className={'pr-0 bg-transparent'} onClick={onClickBlockButton} variant={'icon'}>
@@ -93,19 +163,16 @@ export const PostCard = ({
             </Button>
           )}
         </div>
-        <Typography className={'mt-3 text-light-900'} variant={'small-text'}>
+        <Typography className={'mt-3 mb-2 text-light-900'} variant={'small-text'}>
           {relativeTime}
         </Typography>
 
         <motion.div
-          animate={{
-            y: isCollapsed ? 0 : -30,
-          }}
           initial={{ y: 0 }}
           style={{ overflow: 'hidden' }}
           transition={{ duration: 0.3 }}
         >
-          <Typography className={'mt-[3px] break-all'}>
+          <Typography className={'mt-[3px] break-words'}>
             {textToShow}
             {collapsable && (
               <span
@@ -114,7 +181,7 @@ export const PostCard = ({
                 }
                 onClick={toggleShowMore}
               >
-                {isCollapsed ? 'Show more' : 'Hide'}
+                {isCollapsed ? ' Show more' : ' Hide'}
               </span>
             )}
           </Typography>
