@@ -1,4 +1,3 @@
-import React, { useState } from 'react'
 import Skeleton, { SkeletonTheme } from 'react-loading-skeleton'
 
 import { cn } from '@byte-creators/utils'
@@ -13,6 +12,7 @@ type Props = {
   className?: string
   href?: string
   imgStyles?: string
+  isLoading?: boolean
   isNextLink?: boolean
   onClose?: () => void
   rel?: string
@@ -26,14 +26,13 @@ export const Avatar = ({
   className,
   href,
   imgStyles,
+  isLoading = false,
   isNextLink = false,
   onClose,
   rel = '',
   rounded = true,
   showClose = false,
 }: Props) => {
-  const [isLoaded, setIsLoaded] = useState(false)
-
   const closeHandler = () => {
     if (onClose) {
       onClose()
@@ -46,7 +45,7 @@ export const Avatar = ({
         className={cn(['relative inline-block', className])}
         style={{ height: '100%', width: '100%' }}
       >
-        {!isLoaded && (
+        {isLoading && (
           <Skeleton
             circle={rounded}
             containerClassName={'absolute top-0 left-0 w-full h-full'}
@@ -57,10 +56,8 @@ export const Avatar = ({
         <img
           alt={alt}
           className={cn(imgStyles, [rounded && 'rounded-full'])}
-          onError={() => setIsLoaded(true)}
-          onLoad={() => setIsLoaded(true)}
           src={avatarURL || example}
-          style={{ visibility: isLoaded ? 'visible' : 'hidden' }}
+          style={{ visibility: isLoading ? 'hidden' : 'visible' }}
         />
         {showClose && (
           <span

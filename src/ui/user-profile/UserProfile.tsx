@@ -25,7 +25,12 @@ export const UserProfile = ({
     <SkeletonTheme baseColor={'#3f3e3e'} highlightColor={'#575656'}>
       <div className={cn(className, 'flex gap-3 items-center')}>
         <div className={'w-9 h-9'}>
-          <Avatar avatarURL={avatarUrl || ''} href={`/profile/${profileId}`} isNextLink />
+          <Avatar
+            avatarURL={avatarUrl || ''}
+            href={`/profile/${profileId}`}
+            isLoading={isLoading}
+            isNextLink
+          />
         </div>
         <div>
           {isLoading ? (
