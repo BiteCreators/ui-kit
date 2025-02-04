@@ -42,52 +42,42 @@ export const PostCard = ({
   })
   const textLength = textToShow.length
 
-  const { calculateTextHeight, calculateImageHeight } = useCalculateHeight(textLength, postSize)
+  const { calculateImageHeight, calculateTextHeight } = useCalculateHeight(textLength, postSize)
 
   const textCollapsableHeight = calculateTextHeight(textLength)
   const imgCollapsableHeight = calculateImageHeight(textLength)
 
   return (
     <div
+      className={'mb-[30px] relative'}
       style={{
         height: postContainerHeight,
-        marginBottom: 30,
         maxWidth: postSize,
-        position: 'relative',
       }}
     >
       <div className={cn('cursor-pointer')}>
         <Link href={`/profile/${ownerId}/publications/${postId}`}>
-          <motion.div
-            style={{
-              marginBottom: '12px',
-              overflow: 'hidden',
-              position: 'relative',
-            }}
-          >
+          <motion.div className={'mb-3 overflow-hidden relative'}>
             {postImageUrl ? (
               <motion.img
                 alt={postImageUrl}
                 animate={{ y: isCollapsed ? 0 : -10 }}
+                className={'mb-3 object-cover'}
                 initial={{ y: 0 }}
                 src={postImageUrl}
                 style={{
                   clipPath: isCollapsed ? 'none' : `inset(0 0 ${imgCollapsableHeight} 0)`,
-                  marginBottom: '12px',
-                  objectFit: 'cover',
                 }}
                 transition={{ stiffness: 100, type: 'spring' }}
               />
             ) : (
               <motion.div
                 animate={{ y: isCollapsed ? 0 : -10 }}
-                className={cn('flex justify-center items-center bg-dark-500')}
+                className={cn('flex justify-center items-center bg-dark-500 mb-3 object-cover')}
                 initial={{ y: 0 }}
                 style={{
                   clipPath: isCollapsed ? 'none' : `inset(0 0 ${imgCollapsableHeight} 0)`,
                   height: `${postSize}px`,
-                  marginBottom: '12px',
-                  objectFit: 'cover',
                 }}
                 transition={{ stiffness: 100, type: 'spring' }}
               >
@@ -102,8 +92,8 @@ export const PostCard = ({
         animate={{
           y: isCollapsed ? 0 : textCollapsableHeight,
         }}
+        className={'mb-3 overflow-hidden'}
         initial={{ y: 0 }}
-        style={{ marginTop: '12px', overflow: 'hidden' }}
         transition={{ duration: 0.3 }}
       >
         <div className={cn('flex gap-3 items-center justify-between')}>
@@ -118,11 +108,7 @@ export const PostCard = ({
           {relativeTime}
         </Typography>
 
-        <motion.div
-          initial={{ y: 0 }}
-          style={{ overflow: 'hidden' }}
-          transition={{ duration: 0.3 }}
-        >
+        <motion.div className={'overflow-hidden'} initial={{ y: 0 }} transition={{ duration: 0.3 }}>
           <Typography className={'mt-[3px] break-words'}>
             {textToShow}
             {collapsable && (
