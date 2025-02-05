@@ -14,6 +14,7 @@ type Props = {
   imgStyles?: string
   isLoading?: boolean
   isNextLink?: boolean
+  linkContainerClassname?: string
   onClose?: () => void
   rel?: string
   rounded?: boolean
@@ -28,6 +29,7 @@ export const Avatar = ({
   imgStyles,
   isLoading = false,
   isNextLink = false,
+  linkContainerClassname,
   onClose,
   rel = '',
   rounded = true,
@@ -81,11 +83,19 @@ export const Avatar = ({
   )
 
   return isNextLink && href ? (
-    <Link className={'max-w-full h-full text-center'} href={href} rel={rel}>
+    <Link
+      className={cn([linkContainerClassname, 'max-w-full h-full text-center'])}
+      href={href}
+      rel={rel}
+    >
       {AvatarImage}
     </Link>
   ) : (
-    <a className={'max-w-full h-full text-center flex'} href={href} rel={rel}>
+    <a
+      className={cn([linkContainerClassname, 'max-w-full h-full text-center flex'])}
+      href={href}
+      rel={rel}
+    >
       {AvatarImage}
     </a>
   )
