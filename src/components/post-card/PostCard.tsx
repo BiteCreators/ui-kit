@@ -3,9 +3,9 @@ import { motion } from 'framer-motion'
 import Link from 'next/link'
 
 import { Block, Image } from '../../assets/icons/components'
-import { Button } from '../button/Button'
-import { Typography } from '../typography/Typography'
-import { UserProfile } from '../user-profile/UserProfile'
+import { Button } from '../../ui/button/Button'
+import { Typography } from '../../ui/typography/Typography'
+import { UserProfile } from '../../ui/user-profile/UserProfile'
 
 type Props = {
   avatarOwner: string
