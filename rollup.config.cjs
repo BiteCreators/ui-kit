@@ -23,7 +23,7 @@ export default [
       "next",
       /^next\//,
     ],
-    input: ["src/index.ts", "./src/assets/icons/components/index.ts"],
+    input: ["src/index.ts", "./src/assets/icons/components/index.ts", "./src/components/index.ts"],
     onwarn(warning, warn) {
       if (
         (warning.message && warning.message.includes("use client")) ||
