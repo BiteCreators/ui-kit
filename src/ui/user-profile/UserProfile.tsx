@@ -9,17 +9,21 @@ import { Typography } from '../typography/Typography'
 type Props = {
   avatarUrl: string
   className?: string
+  classNameTypography?: string
   isLoading?: boolean
   profileId: number
+  linkOption?: 'profile/' | 'users/'
   userName: string
 }
 
 export const UserProfile = ({
   avatarUrl,
   className,
+  classNameTypography,
   isLoading = false,
   profileId,
   userName,
+  linkOption = 'profile/',
 }: Props) => {
   return (
     <SkeletonTheme baseColor={'#3f3e3e'} highlightColor={'#575656'}>
@@ -27,7 +31,7 @@ export const UserProfile = ({
         <div className={'w-9 h-9'}>
           <Avatar
             avatarURL={avatarUrl || ''}
-            href={`/profile/${profileId}`}
+            href={`/${linkOption + profileId.toString()}`}
             isLoading={isLoading}
             isNextLink
           />
@@ -38,9 +42,9 @@ export const UserProfile = ({
           ) : (
             <Link
               className={'hover:text-primary-300 text-light-100 duration-75'}
-              href={`/profile/${profileId}`}
+              href={`/${linkOption + profileId.toString()}`}
             >
-              <Typography variant={'h3'}>{userName}</Typography>
+              <Typography className={classNameTypography} variant={'h3'}>{userName}</Typography>
             </Link>
           )}
         </div>

@@ -6,6 +6,7 @@ import { Block, Image } from '../../assets/icons/components'
 import { Button } from '../../ui/button/Button'
 import { Typography } from '../../ui/typography/Typography'
 import { UserProfile } from '../../ui/user-profile/UserProfile'
+import {ScrollArea} from "../../ui/scroll/ScrollArea";
 
 type Props = {
   avatarOwner: string
@@ -39,7 +40,9 @@ export const PostCard = ({
 
   const { collapsable, isCollapsed, textToShow, toggleShowMore } = useShowMore({
     text: description,
+    defaultVisibleLength: 85,
   })
+
   const textLength = textToShow.length
 
   const { calculateImageHeight, calculateTextHeight } = useCalculateHeight(textLength, postSize)
@@ -49,7 +52,7 @@ export const PostCard = ({
 
   return (
     <div
-      className={'mb-[30px] relative'}
+      className={'mb-1 relative'}
       style={{
         height: postContainerHeight,
         maxWidth: postSize,
@@ -57,7 +60,7 @@ export const PostCard = ({
     >
       <div className={cn('cursor-pointer')}>
         <Link href={`/profile/${ownerId}/publications/${postId}`}>
-          <motion.div className={'mb-3 overflow-hidden relative'}>
+          <motion.div className={'overflow-hidden relative'}>
             {postImageUrl ? (
               <motion.img
                 alt={postImageUrl}
@@ -89,6 +92,7 @@ export const PostCard = ({
       </div>
 
       <motion.div
+        style={{paddingTop: isCollapsed ? 0 : '12px'}}
         animate={{
           y: isCollapsed ? 0 : textCollapsableHeight,
         }}
@@ -96,32 +100,37 @@ export const PostCard = ({
         initial={{ y: 0 }}
         transition={{ duration: 0.3 }}
       >
-        <div className={cn('flex gap-3 items-center justify-between')}>
-          <UserProfile avatarUrl={avatarOwner} profileId={ownerId} userName={userName} />
+        <div className={cn(
+          'flex gap-3 items-center justify-between mb-3'
+        )}>
+          <UserProfile linkOption={"users/"} classNameTypography={'h-[38px] leading-5 overflow-hidden'} avatarUrl={avatarOwner} profileId={ownerId} userName={userName} />
           {isAdmin && (
             <Button className={'pr-0 bg-transparent'} onClick={onClickBlockButton} variant={'icon'}>
               <Block />
             </Button>
           )}
         </div>
-        <Typography className={'mt-3 mb-2 text-light-900'} variant={'small-text'}>
+        <Typography className={'mb-2 text-light-900'} variant={'small-text'}>
           {relativeTime}
         </Typography>
 
         <motion.div className={'overflow-hidden'} initial={{ y: 0 }} transition={{ duration: 0.3 }}>
-          <Typography className={'mt-[3px] break-words'}>
+          <ScrollArea style={{height: '278px'}}>
+          <p style={{width: '235px', wordBreak: 'break-all' }} className={'text-sm relative'}>
             {textToShow}
             {collapsable && (
               <span
-                className={
-                  'text-primary-500 underline underline-offset-2 cursor-pointer hover:text-primary-300'
-                }
+                className={cn(
+                  'absolute w-max right-0 pl-1 bg-dark-500 text-primary-500 underline underline-offset-2 cursor-pointer hover:text-primary-300',
+                  !isCollapsed && 'static'
+                )}
                 onClick={toggleShowMore}
               >
                 {isCollapsed ? ' Show more' : ' Hide'}
               </span>
             )}
-          </Typography>
+          </p>
+          </ScrollArea>
         </motion.div>
       </motion.div>
     </div>
