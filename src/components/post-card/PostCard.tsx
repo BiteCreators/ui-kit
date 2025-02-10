@@ -121,8 +121,8 @@ export const PostCard = ({
             {collapsable && (
               <span
                 className={cn(
-                  'absolute w-max right-0 pl-1 bg-dark-500 text-primary-500 underline underline-offset-2 cursor-pointer hover:text-primary-300',
-                  !isCollapsed && 'static'
+                  'absolute w-max right-0 pl-1 bg-dark-700 text-primary-500 underline underline-offset-2 cursor-pointer hover:text-primary-300',
+                  !isCollapsed && 'static whitespace-nowrap'
                 )}
                 onClick={toggleShowMore}
               >
