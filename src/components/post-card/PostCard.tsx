@@ -17,6 +17,7 @@ type Props = {
   ownerId: number
   postContainerHeight?: number
   postId: number
+  linkOption?: 'profile/' | 'users/'
   postImageUrl: string
   postSize?: number
   userName: string
@@ -32,6 +33,7 @@ export const PostCard = ({
   postContainerHeight = 400,
   postId,
   postImageUrl,
+  linkOption,
   postSize = 235,
   userName,
 }: Props) => {
@@ -103,7 +105,7 @@ export const PostCard = ({
         <div className={cn(
           'flex gap-3 items-center justify-between mb-3'
         )}>
-          <UserProfile linkOption={"users/"} classNameTypography={'h-[38px] leading-5 overflow-hidden'} avatarUrl={avatarOwner} profileId={ownerId} userName={userName} />
+          <UserProfile linkOption={linkOption} classNameTypography={'h-[38px] leading-5 overflow-hidden'} avatarUrl={avatarOwner} profileId={ownerId} userName={userName} />
           {isAdmin && (
             <Button className={'pr-0 bg-transparent'} onClick={onClickBlockButton} variant={'icon'}>
               <Block />
