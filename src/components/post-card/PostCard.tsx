@@ -4,20 +4,20 @@ import Link from 'next/link'
 
 import { Block, Image } from '../../assets/icons/components'
 import { Button } from '../../ui/button/Button'
+import { ScrollArea } from '../../ui/scroll/ScrollArea'
 import { Typography } from '../../ui/typography/Typography'
 import { UserProfile } from '../../ui/user-profile/UserProfile'
-import {ScrollArea} from "../../ui/scroll/ScrollArea";
 
 type Props = {
   avatarOwner: string
   createdAt: string
   description: string
   isAdmin?: boolean
+  linkOption?: 'profile/' | 'users/'
   onClickBlockButton?: () => void
   ownerId: number
   postContainerHeight?: number
   postId: number
-  linkOption?: 'profile/' | 'users/'
   postImageUrl: string
   postSize?: number
   userName: string
@@ -28,12 +28,12 @@ export const PostCard = ({
   createdAt,
   description,
   isAdmin,
+  linkOption,
   onClickBlockButton,
   ownerId,
   postContainerHeight = 400,
   postId,
   postImageUrl,
-  linkOption,
   postSize = 235,
   userName,
 }: Props) => {
@@ -41,8 +41,8 @@ export const PostCard = ({
   const relativeTime = getRelativeTime(new Date(createdAt).getTime())
 
   const { collapsable, isCollapsed, textToShow, toggleShowMore } = useShowMore({
+    defaultVisibleLength: 65,
     text: description,
-    defaultVisibleLength: 85,
   })
 
   const textLength = textToShow.length
@@ -83,6 +83,7 @@ export const PostCard = ({
                 style={{
                   clipPath: isCollapsed ? 'none' : `inset(0 0 ${imgCollapsableHeight} 0)`,
                   height: `${postSize}px`,
+                  width: postSize,
                 }}
                 transition={{ stiffness: 100, type: 'spring' }}
               >
@@ -94,18 +95,22 @@ export const PostCard = ({
       </div>
 
       <motion.div
-        style={{paddingTop: isCollapsed ? 0 : '12px'}}
         animate={{
           y: isCollapsed ? 0 : textCollapsableHeight,
         }}
         className={'mb-3 overflow-hidden'}
         initial={{ y: 0 }}
+        style={{ paddingTop: isCollapsed ? 0 : '12px' }}
         transition={{ duration: 0.3 }}
       >
-        <div className={cn(
-          'flex gap-3 items-center justify-between mb-3'
-        )}>
-          <UserProfile linkOption={linkOption} classNameTypography={'h-[38px] leading-5 overflow-hidden'} avatarUrl={avatarOwner} profileId={ownerId} userName={userName} />
+        <div className={cn('flex gap-3 items-center justify-between mb-3')}>
+          <UserProfile
+            avatarUrl={avatarOwner}
+            classNameTypography={'h-[38px] leading-5 overflow-hidden'}
+            linkOption={linkOption}
+            profileId={ownerId}
+            userName={userName}
+          />
           {isAdmin && (
             <Button className={'pr-0 bg-transparent'} onClick={onClickBlockButton} variant={'icon'}>
               <Block />
@@ -117,21 +122,21 @@ export const PostCard = ({
         </Typography>
 
         <motion.div className={'overflow-hidden'} initial={{ y: 0 }} transition={{ duration: 0.3 }}>
-          <ScrollArea style={{height: '278px'}}>
-          <p style={{width: '235px', wordBreak: 'break-all' }} className={'text-sm relative'}>
-            {textToShow}
-            {collapsable && (
-              <span
-                className={cn(
-                  'absolute w-max right-0 pl-1 bg-dark-700 text-primary-500 underline underline-offset-2 cursor-pointer hover:text-primary-300',
-                  !isCollapsed && 'static whitespace-nowrap'
-                )}
-                onClick={toggleShowMore}
-              >
-                {isCollapsed ? ' Show more' : ' Hide'}
-              </span>
-            )}
-          </p>
+          <ScrollArea style={{ height: '278px' }}>
+            <p className={'text-sm relative mr-2'} style={{ wordBreak: 'break-all' }}>
+              {textToShow}
+              {collapsable && (
+                <span
+                  className={cn(
+                    'absolute w-max right-0 pl-1 bg-dark-700 text-primary-500 underline underline-offset-2 cursor-pointer hover:text-primary-300',
+                    !isCollapsed && 'static whitespace-nowrap'
+                  )}
+                  onClick={toggleShowMore}
+                >
+                  {isCollapsed ? ' Show more' : ' Hide'}
+                </span>
+              )}
+            </p>
           </ScrollArea>
         </motion.div>
       </motion.div>
