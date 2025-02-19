@@ -11,8 +11,8 @@ type Props = {
   className?: string
   classNameTypography?: string
   isLoading?: boolean
-  profileId: number
   linkOption?: 'profile/' | 'users/'
+  profileId: number
   userName: string
 }
 
@@ -21,13 +21,13 @@ export const UserProfile = ({
   className,
   classNameTypography,
   isLoading = false,
+  linkOption = 'profile/',
   profileId,
   userName,
-  linkOption = 'profile/',
 }: Props) => {
   return (
     <SkeletonTheme baseColor={'#3f3e3e'} highlightColor={'#575656'}>
-      <div className={cn(className, 'flex gap-3 items-center')}>
+      <div className={cn('flex gap-3 items-center', className)}>
         <div className={'w-9 h-9'}>
           <Avatar
             avatarURL={avatarUrl || ''}
@@ -44,7 +44,9 @@ export const UserProfile = ({
               className={'hover:text-primary-300 text-light-100 duration-75'}
               href={`/${linkOption + profileId.toString()}`}
             >
-              <Typography className={classNameTypography} variant={'h3'}>{userName}</Typography>
+              <Typography className={classNameTypography} variant={'h3'}>
+                {userName}
+              </Typography>
             </Link>
           )}
         </div>

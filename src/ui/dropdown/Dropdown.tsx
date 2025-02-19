@@ -18,12 +18,20 @@ export type DropdownItem = {
 type Props = {
   children?: ReactNode
   className?: string
+  classNameButton?: string
   iconButton?: ReactNode
   iconButtonOpen?: ReactNode
   items?: DropdownItem[]
 }
 
-export const Dropdown = ({ children, className, iconButton, iconButtonOpen, items }: Props) => {
+export const Dropdown = ({
+  children,
+  className,
+  classNameButton,
+  iconButton,
+  iconButtonOpen,
+  items,
+}: Props) => {
   const [open, setOpen] = useState(false)
 
   const variants = {
@@ -59,7 +67,8 @@ export const Dropdown = ({ children, className, iconButton, iconButtonOpen, item
             className={cn(
               'absolute top-0 right-0 p-2 rounded-full focus:outline-none',
               open ? 'text-primary-700' : 'text-light-100',
-              'global-hover:hover:text-primary-700'
+              'global-hover:hover:text-primary-700 transition-all duration-300',
+              classNameButton
             )}
           >
             {icon}
