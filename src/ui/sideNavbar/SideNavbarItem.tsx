@@ -11,9 +11,10 @@ type Props = {
   icon: React.ReactNode
   iconActive: React.ReactNode
   label: string
+  onClick?: React.MouseEventHandler<HTMLAnchorElement> | undefined
 }
 
-export const SideNavbarItem = ({ disabled, href, icon, iconActive, label }: Props) => {
+export const SideNavbarItem = ({ disabled, href, icon, iconActive, label, onClick }: Props) => {
   const pathname = usePathname()
   const isActive = pathname === href
 
@@ -27,6 +28,7 @@ export const SideNavbarItem = ({ disabled, href, icon, iconActive, label }: Prop
         disabled && 'text-dark-100 cursor-default'
       )}
       href={href}
+      onClick={onClick}
     >
       <span className={'w-5 h-5 flex-shrink-0'}>{isActive ? iconActive : icon}</span>
       <span>{label}</span>
