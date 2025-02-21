@@ -1,6 +1,6 @@
 {
   "name": "@byte-creators/ui-kit",
-  "version": "1.9.7",
+  "version": "1.9.8",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
