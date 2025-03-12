@@ -1,5 +1,5 @@
 'use client'
-import React, { ReactNode, useEffect } from 'react'
+import React, { CSSProperties, ReactNode, useEffect } from 'react'
 
 import { cn } from '@byte-creators/utils'
 
@@ -9,6 +9,8 @@ import { useSlider } from './useSlider'
 type Props = {
   duration?: number
   height?: string
+  isMobile?: boolean
+  nativeStyles?: CSSProperties | undefined
   setCurrentIndex?: (currentIndex: number) => void
   slides: ReactNode[]
   stylesSlide?: string
@@ -18,6 +20,8 @@ type Props = {
 export const Slider = ({
   duration = 4000,
   height = '560',
+  isMobile = false,
+  nativeStyles,
   setCurrentIndex,
   slides,
   stylesSlide,
@@ -58,9 +62,13 @@ export const Slider = ({
   return (
     <div
       {...handlers}
-      className={cn(`relative w-full h-[${height}px] overflow-hidden`, stylesSlider)}
+      className={cn(
+        `relative w-full overflow-hidden`,
+        !isMobile && `h-[${height}px] ${stylesSlider}`
+      )}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
+      style={nativeStyles}
     >
       {isNavigation ? (
         <button className={cn('left-3', stylesBtn)} onClick={prevSlide}>

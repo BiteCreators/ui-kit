@@ -38,7 +38,7 @@ export const PageLayout = ({
         {!!footer && <div>{footer}</div>}
       </ScrollArea>
       {!!mobileMenu && (
-        <div className={'md:hidden block absolute bottom-0 w-[100vw] z-40'}>{mobileMenu}</div>
+        <div className={'md:hidden block fixed bottom-0 w-[100vw] z-40'}>{mobileMenu}</div>
       )}
     </div>
   )
