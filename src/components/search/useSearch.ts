@@ -53,10 +53,15 @@ export const useSearch = ({
     redirectWithParam(value)
   }
 
+  const handleSetValue = (value: string ) => {
+    setValue(value)
+  }
+
   return {
     handleChangeSearchInput,
     handleClickSearchButton,
     t,
     value,
+    handleSetValue,
   }
 }

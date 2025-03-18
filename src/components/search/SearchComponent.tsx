@@ -7,6 +7,7 @@ type Props = {
   handleSearchButtonClick?: (value: string) => void
   paramName?: string
   withAutoSearch?: boolean
+  setValue?: (setValue: (value:string) => void) => void
 }
 
 export const SearchComponent = ({
@@ -15,13 +16,18 @@ export const SearchComponent = ({
   handleSearchButtonClick,
   paramName = 'search',
   withAutoSearch = true,
+  setValue
 }: Props) => {
-  const { handleChangeSearchInput, handleClickSearchButton, t, value } = useSearch({
+  const { handleChangeSearchInput, handleClickSearchButton, t, value, handleSetValue } = useSearch({
     debounceDelay,
     handleSearchButtonClick,
     paramName,
     withAutoSearch,
   })
+
+  if (setValue) {
+    setValue(handleSetValue)
+  }
 
   return (
     <div className={fullWidth ? 'w-full' : 'w-[645px]'}>
